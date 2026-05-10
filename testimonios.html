@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonios — Experiencias reales de viajeros | Andara Ecuador</title>
+  <meta name="description" content="Más de 200 viajeros confían en Andara. Lee sus experiencias reales en Costa, Sierra, Amazonía y Galápagos. Reseñas verificadas.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ── STATS BAND ── */
+    .stats-band {
+      background: var(--green); display: flex;
+    }
+    .sb-item {
+      flex: 1; padding: 52px 40px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,.08); transition: background .3s;
+    }
+    .sb-item:last-child { border-right: none; }
+    .sb-item:hover { background: rgba(255,255,255,.04); }
+    .sb-num {
+      font-family: var(--font-display); font-size: 3.2rem;
+      font-weight: 300; color: var(--white); line-height: 1;
+    }
+    .sb-num em { font-style: normal; color: var(--gold); }
+    .sb-lbl {
+      font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.45); margin-top: 6px;
+    }
+
+    /* ── FEATURED TESTIMONIAL ── */
+    .featured-testi {
+      background: var(--green-dark); padding: 80px 72px;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center;
+    }
+    .ft-label {
+      font-size: .63rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .ft-label::before { content: ''; width: 26px; height: 1px; background: var(--gold); flex-shrink: 0; }
+    .ft-quote {
+      font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,3rem);
+      font-weight: 300; font-style: italic; line-height: 1.12;
+      color: var(--white); margin-bottom: 32px;
+    }
+    .ft-quote::before { content: '"'; color: var(--gold); }
+    .ft-quote::after { content: '"'; color: var(--gold); }
+    .ft-author { display: flex; align-items: center; gap: 16px; }
+    .ft-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 300;
+      color: var(--green-dark); flex-shrink: 0;
+    }
+    .ft-name {
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; color: var(--white);
+    }
+    .ft-detail {
+      font-size: .73rem; color: rgba(255,255,255,.42); margin-top: 2px;
+    }
+    .ft-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-top: 4px; }
+    .ft-img {
+      position: relative; border-radius: 3px; overflow: hidden; aspect-ratio: 4/3;
+    }
+    .ft-img img { object-fit: cover; width: 100%; height: 100%; }
+    .ft-img-badge {
+      position: absolute; bottom: 18px; left: 18px;
+      background: rgba(13,31,22,.88); color: var(--gold);
+      font-size: .6rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 2px;
+    }
+
+    /* ── TESTIMONIALS GRID ── */
+    .testi-section { padding: 80px 72px; background: var(--cream); }
+    .testi-header {
+      display: flex; justify-content: space-between; align-items: end;
+      margin-bottom: 52px; gap: 24px;
+    }
+    .testi-filter {
+      display: flex; gap: 2px;
+    }
+    .tf-btn {
+      padding: 10px 20px; font-size: .7rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; border: 1px solid rgba(0,0,0,.1);
+      background: none; color: var(--text-light); transition: all .3s;
+    }
+    .tf-btn.active, .tf-btn:hover {
+      background: var(--green-dark); color: var(--gold); border-color: var(--green-dark);
+    }
+    .tgrid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+    }
+    .tcard {
+      background: var(--white); padding: 32px 28px; border-radius: 3px;
+      display: flex; flex-direction: column; gap: 16px;
+      box-shadow: 0 2px 10px rgba(13,31,22,.06);
+      transition: transform .35s var(--ease), box-shadow .35s;
+    }
+    .tcard:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,31,22,.1); }
+    .tc-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .tc-stars { color: var(--gold); font-size: .9rem; letter-spacing: 2px; }
+    .tc-region {
+      font-size: .58rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green-mid);
+      background: rgba(45,90,61,.08); padding: 4px 10px; border-radius: 20px;
+    }
+    .tc-quote {
+      font-size: .92rem; line-height: 1.72; color: var(--text);
+      font-weight: 300; font-style: italic; flex: 1;
+    }
+    .tc-quote::before { content: '"'; color: var(--gold); font-family: var(--font-display); font-size: 1.3rem; line-height: 0; }
+    .tc-dest {
+      font-size: .72rem; color: var(--text-light); padding-top: 14px;
+      border-top: 1px solid rgba(0,0,0,.06);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tc-dest::before { content: '→'; color: var(--gold); }
+    .tc-footer { display: flex; align-items: center; gap: 12px; }
+    .tc-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green-dark); display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1rem; font-weight: 300;
+      color: var(--gold); flex-shrink: 0;
+    }
+    .tc-name {
+      font-size: .84rem; font-weight: 600; color: var(--green-dark);
+    }
+    .tc-city { font-size: .7rem; color: var(--text-light); margin-top: 1px; }
+    .tc-verified {
+      font-size: .6rem; color: #22c55e; font-weight: 600;
+      letter-spacing: .06em; display: flex; align-items: center; gap: 4px;
+    }
+
+    /* ── PLATFORMS SECTION ── */
+    .platforms-section { background: var(--white); padding: 72px; }
+    .platforms-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .platform-card {
+      border: 1.5px solid rgba(0,0,0,.08); border-radius: 3px;
+      padding: 40px 36px; text-align: center; transition: border-color .3s, box-shadow .3s;
+    }
+    .platform-card:hover { border-color: var(--gold); box-shadow: 0 8px 28px rgba(13,31,22,.07); }
+    .platform-icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .platform-name {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 300;
+      color: var(--green-dark); margin-bottom: 6px;
+    }
+    .platform-score {
+      font-size: 1.8rem; font-weight: 700; color: var(--green-mid); margin-bottom: 4px;
+    }
+    .platform-total { font-size: .76rem; color: var(--text-light); margin-bottom: 18px; }
+    .platform-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 18px; }
+    .platform-cta {
+      display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--green); text-decoration: none; transition: color .3s;
+    }
+    .platform-cta:hover { color: var(--green-mid); }
+
+    /* ── GUARANTEE BAND ── */
+    .guarantee-band {
+      background: var(--green-dark); padding: 64px 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+    }
+    .gb-text h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem,3vw,2.8rem);
+      font-weight: 300; color: var(--white); margin-bottom: 10px;
+    }
+    .gb-text h2 em { font-style: italic; color: var(--gold); }
+    .gb-text p {
+      font-size: .9rem; line-height: 1.78; color: rgba(255,255,255,.55);
+      font-weight: 300; max-width: 480px;
+    }
+    .gb-btns { display: flex; gap: 16px; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .featured-testi { grid-template-columns: 1fr; padding: 64px 40px; gap: 40px; }
+      .testi-section { padding: 64px 40px; }
+      .tgrid { grid-template-columns: 1fr 1fr; }
+      .platforms-section { padding: 64px 40px; }
+      .platforms-grid { grid-template-columns: 1fr; gap: 16px; }
+      .guarantee-band { padding: 56px 40px; }
+    }
+    @media (max-width: 768px) {
+      .stats-band { flex-wrap: wrap; }
+      .sb-item { flex: 1 0 50%; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .featured-testi { padding: 56px 24px; gap: 32px; }
+      .testi-section { padding: 56px 24px; }
+      .testi-header { flex-direction: column; align-items: flex-start; }
+      .tgrid { grid-template-columns: 1fr; }
+      .platforms-section { padding: 52px 24px; }
+      .platforms-grid { grid-template-columns: 1fr 1fr; }
+      .guarantee-band { padding: 48px 24px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body data-page="testimonios">
+  <div class="cursor" id="cur"></div>
+  <div class="cursor-ring" id="curRing"></div>
+
+  <a class="wa-float" href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20información%20sobre%20sus%20paquetes" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <nav class="site-nav scrolled" id="nav">
+    <a class="nav-logo" href="index.html">And<span>a</span>ra</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="inicio">Inicio</a></li>
+      <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
+      <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
+      <li><a href="blog.html" data-nav="blog">Blog</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+    </ul>
+    <button class="hamburger" id="hbg" aria-label="Menú"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mm">
+    <button class="close-menu" id="cls">&#x2715;</button>
+    <a href="index.html">Inicio</a>
+    <a href="destinos.html">Destinos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="blog.html">Blog</a>
+    <a href="contacto.html" style="color:var(--gold)">Reservar</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-img">
+      <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=1920&q=85"
+           alt="Viajeros felices en Ecuador" loading="eager"
+           onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=85'">
+    </div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="index.html">Inicio</a> › Testimonios</div>
+      <div class="section-label">Experiencias verificadas</div>
+      <h1 class="section-title light">Lo que dicen<br><em>nuestros viajeros</em></h1>
+    </div>
+  </div>
+
+  <!-- STATS BAND -->
+  <div class="stats-band reveal">
+    <div class="sb-item"><div class="sb-num">4.9<em>/5</em></div><div class="sb-lbl">Calificación promedio</div></div>
+    <div class="sb-item"><div class="sb-num">200<em>+</em></div><div class="sb-lbl">Reseñas verificadas</div></div>
+    <div class="sb-item"><div class="sb-num">98<em>%</em></div><div class="sb-lbl">Clientes satisfechos</div></div>
+    <div class="sb-item"><div class="sb-num">100<em>%</em></div><div class="sb-lbl">Recomendarían Andara</div></div>
+  </div>
+
+  <!-- FEATURED TESTIMONIAL -->
+  <div class="featured-testi">
+    <div class="reveal">
+      <div class="ft-label">Testimonio destacado</div>
+      <blockquote class="ft-quote">
+        Pensé que organizar el viaje al Yasuní sería imposible. En menos de 48 horas, Andara tenía todo listo: vuelos, lodge, guía. Fue el viaje de mi vida y nunca me sentí solo durante el proceso.
+      </blockquote>
+      <div class="ft-author">
+        <div class="ft-avatar">JM</div>
+        <div>
+          <div class="ft-name">Juan Manuel Rivas</div>
+          <div class="ft-detail">Guayaquil · Viaje a Yasuní, Amazonía · Agosto 2024</div>
+          <div class="ft-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="ft-img reveal reveal-d1">
+      <img src="https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?auto=format&fit=crop&w=700&q=85"
+           alt="Vista aérea del Yasuní Ecuador">
+      <div class="ft-img-badge">Yasuní · Amazonía</div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS GRID -->
+  <section class="testi-section">
+    <div class="testi-header reveal">
+      <div>
+        <div class="section-label">Experiencias reales</div>
+        <h2 class="section-title">Viajeros que<br><em>ya lo vivieron</em></h2>
+      </div>
+      <div class="testi-filter">
+        <button class="tf-btn active" data-filter="all">Todos</button>
+        <button class="tf-btn" data-filter="costa">Costa</button>
+        <button class="tf-btn" data-filter="sierra">Sierra</button>
+        <button class="tf-btn" data-filter="amazonia">Amazonía</button>
+        <button class="tf-btn" data-filter="galapagos">Galápagos</button>
+      </div>
+    </div>
+
+    <div class="tgrid">
+
+      <!-- Costa 1 -->
+      <div class="tcard reveal" data-region="costa">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Costa</span>
+        </div>
+        <p class="tc-quote">Puerto López en junio fue una decisión perfecta. Ver las ballenas desde el bote es algo que no se puede describir. El equipo de Andara coordinó todo en tiempo récord y sin errores.</p>
+        <div class="tc-dest">Puerto López · Avistamiento de ballenas</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">SC</div>
+          <div>
+            <div class="tc-name">Sofía Contreras</div>
+            <div class="tc-city">Quito · Junio 2024</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Sierra 1 -->
+      <div class="tcard reveal reveal-d1" data-region="sierra">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Sierra</span>
+        </div>
+        <p class="tc-quote">Quilotoa me dejó sin palabras. Llegamos al amanecer y la laguna estaba en tonos turquesa increíbles. La hacienda donde nos hospedamos era preciosa. Todo lo que imaginé y más.</p>
+        <div class="tc-dest">Quilotoa · Trekking al cráter</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">AP</div>
+          <div>
+            <div class="tc-name">Andrea Peñafiel</div>
+            <div class="tc-city">Guayaquil · Julio 2024</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Galápagos 1 -->
+      <div class="tcard reveal reveal-d2" data-region="galapagos">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Galápagos</span>
+        </div>
+        <p class="tc-quote">Era mi sueño ir a Galápagos pero siempre lo postergué por la logística. Andara lo resolvió todo en una semana. Vuelos, hotel en Santa Cruz, tours. Viajé sola y me sentí completamente respaldada.</p>
+        <div class="tc-dest">Santa Cruz · 4 noches</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">MV</div>
+          <div>
+            <div class="tc-name">Mariana Vaca</div>
+            <div class="tc-city">Quito · Septiembre 2024</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Amazonía 1 -->
+      <div class="tcard reveal" data-region="amazonia">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Amazonía</span>
+        </div>
+        <p class="tc-quote">Tena fue una sorpresa total. Sabía que iba a hacer rafting, pero no esperaba la visita a la comunidad kichwa ni el taller de chocolate. Esas experiencias adicionales fueron lo mejor del viaje.</p>
+        <div class="tc-dest">Tena · 3 noches · Rafting + cultura</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">RO</div>
+          <div>
+            <div class="tc-name">Roberto Ortega</div>
+            <div class="tc-city">Cuenca · Agosto 2024</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Sierra 2 -->
+      <div class="tcard reveal reveal-d1" data-region="sierra">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Sierra</span>
+        </div>
+        <p class="tc-quote">Fuimos en familia (4 adultos y 2 niños) a Baños. El swing, el Pailón del Diablo, las aguas termales... mis hijos ya quieren volver. El servicio de Andara fue impecable desde la primera consulta hasta que regresamos.</p>
+        <div class="tc-dest">Baños de Agua Santa · 3 noches</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">CL</div>
+          <div>
+            <div class="tc-name">Carlos León</div>
+            <div class="tc-city">Quito · Octubre 2024</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Costa 2 -->
+      <div class="tcard reveal reveal-d2" data-region="costa">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Costa</span>
+        </div>
+        <p class="tc-quote">Nunca había ido a la costa ecuatoriana. Elegimos Montañita para aprender surf y fue mejor de lo esperado. La clase, el hotel, el ceviche que recomendaron... todo 10 puntos. Ya estamos planificando el siguiente.</p>
+        <div class="tc-dest">Montañita · 3 noches · Surf</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">DM</div>
+          <div>
+            <div class="tc-name">Daniela Mora</div>
+            <div class="tc-city">Guayaquil · Enero 2025</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Galápagos 2 -->
+      <div class="tcard reveal" data-region="galapagos">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Galápagos</span>
+        </div>
+        <p class="tc-quote">Hicimos el paquete de Santa Cruz más Isabela. Los pingüinos de Galápagos nadando junto a nosotros son algo que ninguna fotografía puede capturar. Andara nos dio acceso a guías naturalistas privados que hicieron la diferencia.</p>
+        <div class="tc-dest">Santa Cruz + Isabela · 5 noches</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">PG</div>
+          <div>
+            <div class="tc-name">Pablo y Gabriela Torres</div>
+            <div class="tc-city">Quito · Diciembre 2024</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Amazonía 2 -->
+      <div class="tcard reveal reveal-d1" data-region="amazonia">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Amazonía</span>
+        </div>
+        <p class="tc-quote">El Napo Wildlife Center superó completamente mis expectativas. La colpa de loros al amanecer fue mágica. El guía naturalista sabía el nombre de cada pájaro, cada árbol. Andara eligió muy bien el lodge.</p>
+        <div class="tc-dest">Napo Wildlife Center · 5 noches</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">LS</div>
+          <div>
+            <div class="tc-name">Laura Sánchez</div>
+            <div class="tc-city">Quito · Noviembre 2024</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+      <!-- Sierra 3 -->
+      <div class="tcard reveal reveal-d2" data-region="sierra">
+        <div class="tc-header">
+          <div class="tc-stars">★★★★★</div>
+          <span class="tc-region">Sierra</span>
+        </div>
+        <p class="tc-quote">Cuenca es una ciudad que no conocía bien. El tour del centro histórico con guía local, la fábrica de sombreros Panama hat, el día en El Cajas... tres días que se sintieron como una semana. Volveré con mi familia.</p>
+        <div class="tc-dest">Cuenca · 3 noches</div>
+        <div class="tc-footer">
+          <div class="tc-avatar">FJ</div>
+          <div>
+            <div class="tc-name">Fernando Jiménez</div>
+            <div class="tc-city">Guayaquil · Febrero 2025</div>
+          </div>
+          <div class="tc-verified">✓ Verificado</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section class="platforms-section">
+    <div class="reveal">
+      <div class="section-label">Reseñas externas</div>
+      <h2 class="section-title">Nos califican en<br><em>todas las plataformas</em></h2>
+      <p style="font-size:.97rem;line-height:1.78;color:var(--text-light);font-weight:300;max-width:520px;margin-top:12px">Nuestras reseñas son verificadas por plataformas independientes. No editamos ni seleccionamos: mostramos todas.</p>
+    </div>
+    <div class="platforms-grid">
+      <div class="platform-card reveal">
+        <div class="platform-icon">⭐</div>
+        <div class="platform-name">Google Reviews</div>
+        <div class="platform-score">4.9</div>
+        <div class="platform-total">+180 reseñas verificadas</div>
+        <div class="platform-stars">★★★★★</div>
+        <a href="#" class="platform-cta">Ver reseñas en Google →</a>
+      </div>
+      <div class="platform-card reveal reveal-d1">
+        <div class="platform-icon">🦉</div>
+        <div class="platform-name">TripAdvisor</div>
+        <div class="platform-score">4.8</div>
+        <div class="platform-total">+95 reseñas verificadas</div>
+        <div class="platform-stars">★★★★★</div>
+        <a href="#" class="platform-cta">Ver reseñas en TripAdvisor →</a>
+      </div>
+      <div class="platform-card reveal reveal-d2">
+        <div class="platform-icon">📘</div>
+        <div class="platform-name">Facebook Reviews</div>
+        <div class="platform-score">4.9</div>
+        <div class="platform-total">+60 reseñas verificadas</div>
+        <div class="platform-stars">★★★★★</div>
+        <a href="#" class="platform-cta">Ver reseñas en Facebook →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE BAND -->
+  <div class="guarantee-band reveal">
+    <div class="gb-text">
+      <h2>¿Listo para escribir<br>tu propio <em>testimonio?</em></h2>
+      <p>Cada reseña que lees fue vivida por alguien que un día escribió por WhatsApp como estás a punto de hacer tú. El siguiente viaje puede ser el tuyo.</p>
+    </div>
+    <div class="gb-btns">
+      <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20planificar%20mi%20viaje" class="btn-wa" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Planificar mi viaje
+      </a>
+      <a href="destinos.html" class="btn-primary">Ver destinos →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">And<span>a</span>ra</a>
+        <p class="footer-tagline">Agencia de viajes Ecuador. Cuatro regiones, 19 destinos, un equipo a tu lado desde el primer mensaje.</p>
+        <div class="footer-social">
+          <a class="social-link" href="#" aria-label="Instagram">IG</a>
+          <a class="social-link" href="#" aria-label="TikTok">TK</a>
+          <a class="social-link" href="#" aria-label="Facebook">FB</a>
+          <a class="social-link" href="https://wa.me/593XXXXXXXXX" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Explorar</div>
+        <ul class="footer-links">
+          <li><a href="destinos.html#costa">Costa Ecuatoriana</a></li>
+          <li><a href="destinos.html#sierra">Sierra y Andes</a></li>
+          <li><a href="destinos.html#amazonia">Amazonia</a></li>
+          <li><a href="destinos.html#galapagos">Galapagos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Andara</div>
+        <ul class="footer-links">
+          <li><a href="nosotros.html">Quienes somos</a></li>
+          <li><a href="testimonios.html">Testimonios</a></li>
+          <li><a href="blog.html">Guias de viaje</a></li>
+          <li><a href="nosotros.html">Nuestros aliados</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Soporte</div>
+        <ul class="footer-links">
+          <li><a href="contacto.html">Solicitar cotizacion</a></li>
+          <li><a href="https://wa.me/593XXXXXXXXX">WhatsApp directo</a></li>
+          <li><a href="contacto.html">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&#169; 2025 <span>Andara</span> &#183; Agencia de Viajes Ecuador &#183; Todos los derechos reservados</p>
+      <p class="footer-copy">Hecho en Ecuador</p>
+    </div>
+  </footer>
+
+  <script>
+    const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    (function l(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(l);})();
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.opacity='.2';});el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.55';});});
+    document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===document.body.dataset.page)a.classList.add('active');});
+    const hbg=document.getElementById('hbg'),mm=document.getElementById('mm'),cls=document.getElementById('cls');
+    hbg.addEventListener('click',()=>mm.classList.add('open'));
+    cls.addEventListener('click',()=>mm.classList.remove('open'));
+    const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+    // Filter testimonials
+    document.querySelectorAll('.tf-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f=btn.dataset.filter;
+        document.querySelectorAll('.tcard').forEach(c=>{
+          c.style.display=(f==='all'||c.dataset.region===f)?'flex':'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

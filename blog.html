@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guias de Viaje Ecuador — Blog | Andara</title>
+  <meta name="description" content="Guias de viaje Ecuador: Galapagos, Costa, Sierra y Amazonia. Tips, mejores epocas, que llevar y todo lo que necesitas saber antes de viajar.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .blog-hero{background:var(--green-dark);padding:140px 72px 72px;position:relative;overflow:hidden}
+    .blog-hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=1920&q=55') center/cover no-repeat;opacity:.14}
+    .blog-hero-inner{position:relative;z-index:1;max-width:680px}
+    .bh-label{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+    .bh-label::before{content:"";width:28px;height:1px;background:var(--gold);flex-shrink:0}
+    .bh-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:.97;color:var(--white);margin-bottom:20px}
+    .bh-title em{font-style:italic;color:var(--gold)}
+    .bh-sub{font-size:.97rem;line-height:1.78;font-weight:300;color:rgba(255,255,255,.55);max-width:520px}
+
+    .blog-section{padding:80px 72px;background:var(--cream)}
+    .blog-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;gap:24px;flex-wrap:wrap}
+    .cat-filter{display:flex;gap:2px;flex-wrap:wrap}
+    .cf-btn{padding:10px 20px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,0,0,.1);background:none;color:var(--text-light);transition:all .3s}
+    .cf-btn.active,.cf-btn:hover{background:var(--green-dark);color:var(--gold);border-color:var(--green-dark)}
+
+    /* FEATURED */
+    .art-featured-wrap{margin-bottom:52px}
+    .art-card.featured{display:grid;grid-template-columns:1.4fr 1fr;background:var(--white);border-radius:3px;overflow:hidden;box-shadow:0 2px 16px rgba(13,31,22,.07);transition:transform .4s var(--ease),box-shadow .4s}
+    .art-card.featured:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(13,31,22,.12)}
+
+    /* GRID */
+    .art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .art-card{display:flex;flex-direction:column;background:var(--white);border-radius:3px;overflow:hidden;box-shadow:0 2px 12px rgba(13,31,22,.06);transition:transform .4s var(--ease),box-shadow .4s}
+    .art-card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(13,31,22,.12)}
+
+    .ai-img{position:relative;overflow:hidden;flex-shrink:0}
+    .ai-img img{object-fit:cover;width:100%;height:100%;transition:transform .75s var(--ease);display:block}
+    .art-card:hover .ai-img img{transform:scale(1.05)}
+    .ai-cat{position:absolute;top:14px;left:14px;background:rgba(13,31,22,.85);color:var(--gold);font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border-radius:2px}
+    .ai-read{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.92);color:var(--text-light);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+    .ai-body{padding:26px 28px 32px;flex:1;display:flex;flex-direction:column}
+    .art-card.featured .ai-body{padding:48px 52px;justify-content:center}
+    .ai-date{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);margin-bottom:10px}
+    .ai-title{font-family:var(--font-display);font-size:1.45rem;font-weight:300;color:var(--green-dark);line-height:1.12;margin-bottom:12px}
+    .art-card.featured .ai-title{font-size:2rem}
+    .ai-excerpt{font-size:.84rem;line-height:1.72;color:var(--text-light);font-weight:300;flex:1;margin-bottom:20px}
+    .ai-cta{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);text-decoration:none;transition:gap .3s;margin-top:auto}
+    .ai-cta:hover{gap:14px}
+
+    /* WA CTA BAND */
+    .wa-band{background:var(--green-dark);padding:72px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .wa-band-text .section-label::before{background:var(--gold)}
+    .wa-band-text p{font-size:1rem;line-height:1.82;color:rgba(255,255,255,.58);font-weight:300;margin-top:16px;max-width:440px}
+    .wa-band-form{background:rgba(255,255,255,.05);border:1px solid rgba(200,169,110,.15);border-radius:3px;padding:44px 40px}
+    .wbf-title{font-family:var(--font-display);font-size:1.4rem;font-weight:300;color:var(--white);margin-bottom:8px}
+    .wbf-sub{font-size:.82rem;color:rgba(255,255,255,.48);font-weight:300;line-height:1.65;margin-bottom:28px}
+    .wbf-btns{display:flex;flex-direction:column;gap:12px}
+    .wbf-btn{display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:2px;text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s}
+    .wbf-btn-wa{background:#25D366;color:var(--white)}
+    .wbf-btn-wa:hover{background:#1db954;transform:translateY(-2px)}
+    .wbf-btn-dest{background:rgba(255,255,255,.08);color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.12)}
+    .wbf-btn-dest:hover{background:rgba(255,255,255,.14);color:var(--white)}
+
+    @media(max-width:1100px){.blog-section{padding:72px 40px}.art-grid{grid-template-columns:1fr 1fr}.art-card.featured{grid-template-columns:1fr;display:flex;flex-direction:column}.wa-band{padding:56px 40px;grid-template-columns:1fr;gap:36px}}
+    @media(max-width:768px){.blog-section{padding:56px 24px}.blog-hero{padding:110px 24px 56px}.art-grid{grid-template-columns:1fr}.blog-header{flex-direction:column;align-items:flex-start}.wa-band{padding:48px 24px}}
+  </style>
+</head>
+<body data-page="blog">
+  <div class="cursor" id="cur"></div><div class="cursor-ring" id="curRing"></div>
+  <a class="wa-float" href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20guias%20de%20viaje" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+  <nav class="site-nav scrolled" id="nav"><a class="nav-logo" href="index.html">And<span>a</span>ra</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="inicio">Inicio</a></li>
+      <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
+      <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
+      <li><a href="blog.html" data-nav="blog">Blog</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+    </ul><button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mm">
+    <button class="close-menu" id="cls">&#x2715;</button>
+    <a href="index.html">Inicio</a><a href="destinos.html">Destinos</a>
+    <a href="nosotros.html">Nosotros</a><a href="blog.html">Blog</a>
+    <a href="contacto.html" style="color:var(--gold)">Reservar</a>
+  </div>
+
+  <div class="blog-hero">
+    <div class="blog-hero-inner">
+      <div class="bh-label">Guias de viaje &#183; Ecuador</div>
+      <h1 class="bh-title">Todo lo que necesitas<br>saber para <em>viajar mejor</em></h1>
+      <p class="bh-sub">Guias practicas, rutas recomendadas, temporadas ideales y tips de primera mano para cada region del Ecuador. Recibe cualquier guia directamente por WhatsApp.</p>
+    </div>
+  </div>
+
+  <section class="blog-section">
+    <div class="blog-header reveal">
+      <div>
+        <div class="section-label">Todas las guias</div>
+        <h2 class="section-title">Encuentra tu<br><em>guia ideal</em></h2>
+      </div>
+      <div class="cat-filter">
+        <button class="cf-btn active" data-cat="all">Todas</button>
+        <button class="cf-btn" data-cat="galapagos">Galapagos</button>
+        <button class="cf-btn" data-cat="costa">Costa</button>
+        <button class="cf-btn" data-cat="sierra">Sierra</button>
+        <button class="cf-btn" data-cat="amazonia">Amazonia</button>
+        <button class="cf-btn" data-cat="tips">Tips</button>
+      </div>
+    </div>
+
+    <div class="art-featured-wrap">
+      <div class="art-card featured reveal" data-cat="galapagos">
+        <div class="ai-img" style="aspect-ratio:16/9">
+          <img src="https://images.unsplash.com/photo-1706957614198-8d2e5f0ed6ea?auto=format&fit=crop&w=800&q=85" alt="Todo lo que necesitas saber antes de ir a Galápagos" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Galápagos</span>
+          <span class="ai-read">8 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Marzo 2025</div>
+          <h3 class="ai-title">Todo lo que necesitas saber antes de ir a Galápagos</h3>
+          <p class="ai-excerpt">La tarifa INGALA, los mejores meses, qué islas visitar según tu presupuesto y cómo moverse entre ellas. La guía más completa para tu primera vez en las islas.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Todo%20lo%20que%20necesitas%20saber%20antes%20de%2" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+    </div>
+    <div class="art-grid">
+      <div class="art-card reveal" data-cat="costa">
+        <div class="ai-img" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=85" alt="Costa ecuatoriana: cuándo ir y qué esperar según la temporada" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Costa</span>
+          <span class="ai-read">6 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Febrero 2025</div>
+          <h3 class="ai-title">Costa ecuatoriana: cuándo ir y qué esperar según la temporada</h3>
+          <p class="ai-excerpt">Temporada seca vs. temporada de lluvias en la costa. Cuándo ver ballenas, cuándo surfear y cuándo ir con familia. Todo sobre el clima costera de Ecuador.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Costa%20ecuatoriana:%20cuándo%20ir%20y%20qué%20esp" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+      <div class="art-card reveal" data-cat="sierra">
+        <div class="ai-img" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1694206078595-460a3ec27772?auto=format&fit=crop&w=800&q=85" alt="Quilotoa sin secretos: la guía completa del cráter más fotogénico del Ecuador" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Sierra</span>
+          <span class="ai-read">7 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Enero 2025</div>
+          <h3 class="ai-title">Quilotoa sin secretos: la guía completa del cráter más fotogénico del Ecuador</h3>
+          <p class="ai-excerpt">Cómo llegar, dónde hospedarse con vistas al cráter, el hike al fondo, el kayak y el mercado de Zumbahua. Todo lo que necesitas saber para aprovechar el día.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Quilotoa%20sin%20secretos:%20la%20guía%20completa%" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+      <div class="art-card reveal" data-cat="amazonia">
+        <div class="ai-img" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?auto=format&fit=crop&w=800&q=85" alt="Tu primera vez en la Amazonía ecuatoriana: qué esperar y cómo prepararte" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Amazonía</span>
+          <span class="ai-read">9 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Diciembre 2024</div>
+          <h3 class="ai-title">Tu primera vez en la Amazonía ecuatoriana: qué esperar y cómo prepararte</h3>
+          <p class="ai-excerpt">Tena o Yasuní, qué diferencias hay, qué llevar, cómo evitar los mosquitos y por qué la Amazonía ecuatoriana es diferente al resto del Amazonas. Guía práctica.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Tu%20primera%20vez%20en%20la%20Amazonía%20ecuatori" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+      <div class="art-card reveal" data-cat="sierra">
+        <div class="ai-img" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1566352081904-cfa7024f5d6a?auto=format&fit=crop&w=800&q=85" alt="Quito en 48 horas: la ruta perfecta por el centro histórico" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Sierra</span>
+          <span class="ai-read">5 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Noviembre 2024</div>
+          <h3 class="ai-title">Quito en 48 horas: la ruta perfecta por el centro histórico</h3>
+          <p class="ai-excerpt">Dos días en Quito aprovechados al máximo. Desde El Panecillo hasta el Teleférico, la basílica al atardecer y los mejores restaurantes del barrio La Floresta.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Quito%20en%2048%20horas:%20la%20ruta%20perfecta%20" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+      <div class="art-card reveal" data-cat="costa">
+        <div class="ai-img" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=85" alt="Avistamiento de ballenas en Puerto López: guía completa de la temporada" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Costa</span>
+          <span class="ai-read">6 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Octubre 2024</div>
+          <h3 class="ai-title">Avistamiento de ballenas en Puerto López: guía completa de la temporada</h3>
+          <p class="ai-excerpt">De junio a septiembre, las ballenas jorobadas llegan a la costa ecuatoriana. Cómo organizar el tour, qué esperar en el mar y por qué la Isla de la Plata vale la pena.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Avistamiento%20de%20ballenas%20en%20Puerto%20López" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+      <div class="art-card reveal" data-cat="sierra">
+        <div class="ai-img" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85" alt="Las mejores haciendas al pie del Cotopaxi para una noche diferente" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Sierra</span>
+          <span class="ai-read">5 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Septiembre 2024</div>
+          <h3 class="ai-title">Las mejores haciendas al pie del Cotopaxi para una noche diferente</h3>
+          <p class="ai-excerpt">Dormir en una hacienda colonial con el Cotopaxi nevado frente a la ventana. Las mejores opciones desde $80 hasta $250 por noche, con caballos, fogones y paisaje andino.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Las%20mejores%20haciendas%20al%20pie%20del%20Cotop" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+      <div class="art-card reveal" data-cat="tips">
+        <div class="ai-img" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?auto=format&fit=crop&w=800&q=85" alt="12 cosas que nadie te dice antes de viajar a Ecuador por primera vez" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+          <span class="ai-cat">Tips</span>
+          <span class="ai-read">7 min</span>
+        </div>
+        <div class="ai-body">
+          <div class="ai-date">Agosto 2024</div>
+          <h3 class="ai-title">12 cosas que nadie te dice antes de viajar a Ecuador por primera vez</h3>
+          <p class="ai-excerpt">La altitud en Quito, el clima impredecible de los Andes, qué no comer en el primer día, cómo moverse entre regiones y los errores más comunes de los viajeros. Guía honesta.</p>
+          <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%2012%20cosas%20que%20nadie%20te%20dice%20antes%20de%" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WA CTA -->
+  <div class="wa-band reveal">
+    <div class="wa-band-text">
+      <div class="section-label" style="color:var(--gold)"><span style="width:24px;height:1px;background:var(--gold);display:inline-block;margin-right:12px"></span>No te pierdas nada</div>
+      <h2 class="section-title light">Recibe guias<br><em>antes que nadie</em></h2>
+      <p>Cada mes publicamos nuevas guias de destinos en Ecuador. Escribenos por WhatsApp y te las enviamos directamente, junto con ofertas exclusivas y noticias de temporada.</p>
+    </div>
+    <div class="wa-band-form">
+      <div class="wbf-title">Empecemos con una guia gratuita</div>
+      <p class="wbf-sub">Cuentanos a que region quieres ir y te enviamos la guia completa por WhatsApp, sin costo. Nuestros asesores la personalizan para tu perfil de viajero.</p>
+      <div class="wbf-btns">
+        <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20recibir%20guias%20de%20viaje%20de%20Ecuador" class="wbf-btn wbf-btn-wa" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quiero mi guia gratuita
+        </a>
+        <a href="destinos.html" class="wbf-btn wbf-btn-dest">Ver todos los destinos &#x2192;</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="nav-logo" href="index.html">And<span>a</span>ra</a><p class="footer-tagline">Agencia de viajes Ecuador. Cuatro regiones, 19 destinos, un equipo a tu lado desde el primer mensaje.</p><div class="footer-social"><a class="social-link" href="#">IG</a><a class="social-link" href="#">TK</a><a class="social-link" href="#">FB</a><a class="social-link" href="https://wa.me/593XXXXXXXXX">WA</a></div></div>
+      <div><div class="footer-col-title">Explorar</div><ul class="footer-links"><li><a href="destinos.html#costa">Costa Ecuatoriana</a></li><li><a href="destinos.html#sierra">Sierra y Andes</a></li><li><a href="destinos.html#amazonia">Amazonia</a></li><li><a href="destinos.html#galapagos">Galapagos</a></li></ul></div>
+      <div><div class="footer-col-title">Andara</div><ul class="footer-links"><li><a href="nosotros.html">Quienes somos</a></li><li><a href="testimonios.html">Testimonios</a></li><li><a href="blog.html">Guias de viaje</a></li><li><a href="nosotros.html">Nuestros aliados</a></li></ul></div>
+      <div><div class="footer-col-title">Soporte</div><ul class="footer-links"><li><a href="contacto.html">Solicitar cotizacion</a></li><li><a href="https://wa.me/593XXXXXXXXX">WhatsApp directo</a></li><li><a href="contacto.html">Preguntas frecuentes</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">&#169; 2025 <span>Andara</span> &#183; Agencia de Viajes Ecuador &#183; Todos los derechos reservados</p><p class="footer-copy">Hecho en Ecuador</p></div>
+  </footer>
+  <script>    const c=document.getElementById('cur'),r=document.getElementById('curRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px';});
+    (function l(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(l);})();
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{c.style.transform='translate(-50%,-50%) scale(2.2)';r.style.opacity='.2';});el.addEventListener('mouseleave',()=>{c.style.transform='translate(-50%,-50%) scale(1)';r.style.opacity='.55';});});
+    document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===document.body.dataset.page)a.classList.add('active');});
+    window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});
+    document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mm').classList.add('open'));
+    document.getElementById('cls').addEventListener('click',()=>document.getElementById('mm').classList.remove('open'));
+    const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+    // Category filter
+    document.querySelectorAll('.cf-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.cf-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f=btn.dataset.cat;
+        document.querySelectorAll('.art-card').forEach(c=>{c.style.display=(f==='all'||c.dataset.cat===f)?'flex':'none';});
+      });
+    });</script>
+</body>
+</html>

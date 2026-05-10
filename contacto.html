@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto y Reservas — Andara Ecuador</title>
+  <meta name="description" content="Contacta a Andara por WhatsApp o formulario. Respuesta en menos de 24 horas. Tres puntos de atencion: Quito, Guayaquil y Cuenca.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .wa-hero{background:var(--green-dark);padding:80px 72px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;position:relative;overflow:hidden}
+    .wa-hero::before{content:"";position:absolute;width:600px;height:600px;background:rgba(37,211,102,.04);border-radius:50%;top:50%;right:-100px;transform:translateY(-50%);pointer-events:none}
+    .wa-left{position:relative;z-index:1;max-width:540px}
+    .wa-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);color:#4ade80;font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:8px 20px;border-radius:20px;margin-bottom:20px}
+    .wa-badge::before{content:"";width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .wa-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:14px}
+    .wa-title em{font-style:italic;color:#4ade80}
+    .wa-sub{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.58);font-weight:300;margin-bottom:32px}
+    .wa-stats{display:flex;gap:32px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,.08)}
+    .ws-val{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--gold);line-height:1}
+    .ws-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:3px}
+    .wa-right{position:relative;z-index:1}
+    .wa-card{background:#25D366;padding:48px 44px;border-radius:4px;text-align:center;min-width:280px;box-shadow:0 20px 60px rgba(37,211,102,.3)}
+    .wa-card-icon{font-size:3.5rem;margin-bottom:16px}
+    .wa-card-title{font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);margin-bottom:8px}
+    .wa-card-sub{font-size:.84rem;color:rgba(255,255,255,.8);margin-bottom:28px;line-height:1.6}
+    .wa-card-btn{display:block;background:var(--white);color:#1a5c2a;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:3px;text-decoration:none;transition:all .3s;margin-bottom:12px}
+    .wa-card-btn:hover{background:rgba(255,255,255,.9);transform:translateY(-2px)}
+    .wa-card-note{font-size:.7rem;color:rgba(255,255,255,.65);line-height:1.5}
+    /* FORM + INFO */
+    .contact-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:0;background:var(--cream)}
+    .contact-info{padding:72px 56px;background:var(--white)}
+    .contact-form-side{padding:72px 56px}
+    .info-block{margin-bottom:36px}
+    .info-block-title{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+    .info-block-title::before{content:"";width:20px;height:1px;background:var(--gold);flex-shrink:0}
+    .info-item{display:flex;gap:14px;margin-bottom:12px}
+    .info-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px}
+    .info-text{font-size:.88rem;line-height:1.65;color:var(--text)}
+    .info-text strong{color:var(--green-dark);display:block;font-weight:600;margin-bottom:2px}
+    .info-text span{color:var(--text-light);font-weight:300}
+    .city-tabs{display:flex;gap:2px;margin-bottom:16px}
+    .city-tab{flex:1;text-align:center;padding:10px 8px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;transition:all .3s;cursor:pointer}
+    .city-tab.active{background:var(--green-dark);color:var(--gold)}
+    .city-tab:not(.active){background:var(--cream);color:var(--text-light)}
+    .city-info{display:none}.city-info.active{display:block}
+    .schedule-box{background:var(--cream);padding:18px 20px;border-radius:3px;border-left:3px solid var(--gold)}
+    .sched-row{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;padding:5px 0;color:var(--text-light)}
+    .sched-row strong{color:var(--green-dark);font-weight:600}
+    .sched-row span{color:var(--green-mid);font-weight:500}
+    .always-on{background:var(--green-dark);color:rgba(255,255,255,.72);padding:12px 16px;border-radius:2px;font-size:.78rem;line-height:1.5;margin-top:10px;text-align:center}
+    .always-on strong{color:var(--gold)}
+    .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .soc-card{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:3px;text-decoration:none;border:1.5px solid rgba(0,0,0,.07);transition:all .3s}
+    .soc-card:hover{border-color:var(--green);background:var(--cream)}
+    .soc-name{font-size:.78rem;font-weight:600;color:var(--green-dark);display:block}
+    .soc-handle{font-size:.7rem;color:var(--text-light)}
+    /* FORM */
+    .form-title{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--green-dark);margin-bottom:8px}
+    .form-subtitle{font-size:.88rem;color:var(--text-light);font-weight:300;line-height:1.65;margin-bottom:28px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0}
+    .form-group{margin-bottom:16px}
+    select.form-control{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 6 5-6' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;appearance:none}
+    .form-submit{width:100%;padding:16px 32px;background:var(--green-dark);color:var(--white);font-family:var(--font-body);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border:none;border-radius:2px;transition:all .3s;margin-top:8px;cursor:pointer}
+    .form-submit:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 12px 30px rgba(13,31,22,.2)}
+    .form-note{font-size:.72rem;color:var(--text-light);text-align:center;margin-top:14px;line-height:1.65}
+    .success-msg{display:none;background:rgba(45,90,61,.08);border:1.5px solid var(--green-mid);border-radius:3px;padding:28px 30px;text-align:center;margin-top:20px}
+    .success-msg h3{font-family:var(--font-display);font-size:1.5rem;color:var(--green-dark);margin-bottom:8px}
+    .success-msg p{font-size:.88rem;color:var(--text-light);line-height:1.7}
+    /* PAGOS */
+    .pay-section{background:var(--green-dark);padding:80px 72px}
+    .pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+    .pay-card{background:rgba(255,255,255,.04);padding:44px 38px;border:1px solid rgba(200,169,110,.08);transition:background .3s}
+    .pay-card:hover{background:rgba(255,255,255,.07)}
+    .pay-icon{font-size:2.4rem;margin-bottom:18px}
+    .pay-name{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--white);margin-bottom:10px}
+    .pay-desc{font-size:.85rem;line-height:1.72;color:rgba(255,255,255,.52);font-weight:300;margin-bottom:18px}
+    .pay-highlight{background:rgba(200,169,110,.12);border-left:2px solid var(--gold);padding:10px 16px;font-size:.78rem;color:var(--gold);font-weight:500;border-radius:0 2px 2px 0;margin-bottom:14px}
+    .pay-logos{display:flex;gap:8px;flex-wrap:wrap}
+    .pay-logo{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);padding:5px 12px;border-radius:2px}
+    /* FAQ */
+    .faq-section{background:var(--cream);padding:80px 72px}
+    .faq-list{margin-top:52px}
+    .faq-item{border-bottom:1px solid rgba(0,0,0,.07)}
+    .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:24px 0;background:none;border:none;text-align:left;gap:24px;cursor:pointer}
+    .faq-q-text{font-family:var(--font-display);font-size:1.2rem;font-weight:400;color:var(--green-dark)}
+    .faq-icon{flex-shrink:0;width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--green);transition:all .3s}
+    .faq-item.open .faq-icon{background:var(--green-dark);color:var(--gold);border-color:var(--green-dark);transform:rotate(45deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease-out}
+    .faq-item.open .faq-answer{max-height:400px}
+    .faq-answer-inner{padding:0 0 26px;font-size:.9rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:780px}
+    @media(max-width:1100px){.wa-hero{flex-direction:column;padding:64px 40px}.contact-layout{grid-template-columns:1fr}.contact-info,.contact-form-side{padding:56px 40px}.pay-section{padding:64px 40px}.pay-grid{grid-template-columns:1fr}.faq-section{padding:64px 40px}}
+    @media(max-width:768px){.wa-hero{padding:52px 24px}.contact-info,.contact-form-side{padding:48px 24px}.form-row{grid-template-columns:1fr}.social-grid{grid-template-columns:1fr}.pay-section{padding:52px 24px}.faq-section{padding:52px 24px}}
+  </style>
+</head>
+<body data-page="contacto">
+  <div class="cursor" id="cur"></div><div class="cursor-ring" id="curRing"></div>
+
+  <nav class="site-nav scrolled" id="nav">
+    <a class="nav-logo" href="index.html">And<span>a</span>ra</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="inicio">Inicio</a></li>
+      <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
+      <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
+      <li><a href="blog.html" data-nav="blog">Blog</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+    </ul>
+    <button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mm">
+    <button class="close-menu" id="cls">&#x2715;</button>
+    <a href="index.html">Inicio</a><a href="destinos.html">Destinos</a>
+    <a href="nosotros.html">Nosotros</a><a href="blog.html">Blog</a>
+    <a href="contacto.html" style="color:var(--gold)">Reservar</a>
+  </div>
+
+  <div class="page-hero" style="height:44vh;min-height:340px">
+    <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=85" alt="Contacto Andara Ecuador" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=85'"></div>
+    <div class="page-hero-overlay" style="background:linear-gradient(180deg,rgba(13,31,22,.3) 0%,rgba(13,31,22,.9) 100%)"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="index.html">Inicio</a> &#x203A; Contacto</div>
+      <div class="section-label">Respuesta en menos de 24 horas</div>
+      <h1 class="section-title light">Tu viaje empieza<br><em>con una conversacion</em></h1>
+    </div>
+  </div>
+
+  <!-- 1. WHATSAPP — CANAL PRINCIPAL -->
+  <div class="wa-hero">
+    <div class="wa-left reveal">
+      <div class="wa-badge">Canal principal · Respuesta inmediata</div>
+      <div class="wa-title">La forma mas rapida:<br><em>escribenos ahora</em></div>
+      <p class="wa-sub">Un asesor real te respondera en minutos. Cuentanos tu destino, tus fechas y con quien viajas. El resto lo hacemos nosotros.</p>
+      <div class="wa-stats">
+        <div><div class="ws-val">&lt;24h</div><div class="ws-lbl">Tiempo de respuesta</div></div>
+        <div><div class="ws-val">24/7</div><div class="ws-lbl">Soporte en destino</div></div>
+        <div><div class="ws-val">3 pasos</div><div class="ws-lbl">Para reservar</div></div>
+      </div>
+    </div>
+    <div class="wa-right reveal reveal-d2">
+      <div class="wa-card">
+        <div class="wa-card-icon">&#x1F4AC;</div>
+        <div class="wa-card-title">WhatsApp Business</div>
+        <p class="wa-card-sub">Comparte tu destino, fechas y numero de viajeros. Recibiras tu propuesta el mismo dia.</p>
+        <a href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara!%20Quiero%20planificar%20un%20viaje.%20Mi%20destino%20es%3A" class="wa-card-btn" target="_blank" rel="noopener">&#x2192; Abrir WhatsApp ahora</a>
+        <div class="wa-card-note">+593 XX XXX XXXX · L-V 8:00-18:00<br>Soporte 24/7 para viajeros activos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. FORMULARIO + INFO -->
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="info-block reveal">
+        <div class="info-block-title">Correo electronico</div>
+        <div class="info-item"><div class="info-icon">&#x1F4E7;</div><div class="info-text"><strong>somosandara@gmail.com</strong><span>Consultas formales, documentacion y alianzas. Respuesta garantizada en menos de 24 horas habiles.</span></div></div>
+      </div>
+      <div class="info-block reveal">
+        <div class="info-block-title">Puntos de atencion</div>
+        <div class="city-tabs" id="cityTabs">
+          <button class="city-tab active" data-city="quito">Quito</button>
+          <button class="city-tab" data-city="guayaquil">Guayaquil</button>
+          <button class="city-tab" data-city="cuenca">Cuenca</button>
+        </div>
+        <div class="city-info active" id="city-quito"><div class="info-item"><div class="info-icon">&#x1F4CD;</div><div class="info-text"><strong>Quito — Sede principal</strong><span>Asesoria completa, salidas organizadas y punto de pago en efectivo. Especialistas en rutas Sierra y Amazonia.</span></div></div></div>
+        <div class="city-info" id="city-guayaquil"><div class="info-item"><div class="info-icon">&#x1F4CD;</div><div class="info-text"><strong>Guayaquil</strong><span>Asesoria digital y presencial. Salidas desde GYE a Costa y Galapagos. Punto de pago en efectivo.</span></div></div></div>
+        <div class="city-info" id="city-cuenca"><div class="info-item"><div class="info-icon">&#x1F4CD;</div><div class="info-text"><strong>Cuenca</strong><span>Atencion digital. Especialistas en Sierra Sur y conexiones costeras. Punto de pago en efectivo.</span></div></div></div>
+      </div>
+      <div class="info-block reveal">
+        <div class="info-block-title">Horarios de atencion</div>
+        <div class="schedule-box">
+          <div class="sched-row"><strong>Lunes a Viernes</strong><span>8:00 - 18:00</span></div>
+          <div class="sched-row"><strong>Sabados</strong><span>9:00 - 14:00</span></div>
+          <div class="sched-row"><strong>Domingos</strong><span>Emergencias activas</span></div>
+        </div>
+        <div class="always-on"><strong>Soporte 24/7</strong> disponible para todos los viajeros activos con Andara.</div>
+      </div>
+      <div class="info-block reveal">
+        <div class="info-block-title">Siguenos</div>
+        <div class="social-grid">
+          <a href="#" class="soc-card"><span style="font-size:1.3rem">&#x1F4F8;</span><div><span class="soc-name">Instagram</span><span class="soc-handle">@somosandara</span></div></a>
+          <a href="#" class="soc-card"><span style="font-size:1.3rem">&#x1F3B5;</span><div><span class="soc-name">TikTok</span><span class="soc-handle">@somosandara</span></div></a>
+          <a href="#" class="soc-card"><span style="font-size:1.3rem">&#x1F464;</span><div><span class="soc-name">Facebook</span><span class="soc-handle">Andara Ecuador</span></div></a>
+          <a href="https://wa.me/593XXXXXXXXX" target="_blank" rel="noopener" class="soc-card" style="border-color:rgba(37,211,102,.3);background:rgba(37,211,102,.04)"><span style="font-size:1.3rem">&#x1F4AC;</span><div><span class="soc-name" style="color:#1a7a3c">WhatsApp</span><span class="soc-handle">+593 XX XXX XXXX</span></div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-side reveal">
+      <div class="form-title">Solicita tu cotizacion</div>
+      <p class="form-subtitle">Completa el formulario y un asesor te contactara en menos de 24 horas. Sin compromisos.</p>
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="nombre">Nombre *</label><input class="form-control" type="text" id="nombre" placeholder="Tu nombre" required></div>
+          <div class="form-group"><label class="form-label" for="apellido">Apellido *</label><input class="form-control" type="text" id="apellido" placeholder="Tu apellido" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="email">Email *</label><input class="form-control" type="email" id="email" placeholder="somosandara@gmail.com" required></div>
+          <div class="form-group"><label class="form-label" for="telefono">WhatsApp *</label><input class="form-control" type="tel" id="telefono" placeholder="+593 99 999 9999" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="ciudad_origen">Ciudad de origen *</label><select class="form-control" id="ciudad_origen" required><option value="">Selecciona tu ciudad</option><option>Quito</option><option>Guayaquil</option><option>Cuenca</option><option>Ambato</option><option>Loja</option><option>Otra ciudad</option></select></div>
+          <div class="form-group"><label class="form-label" for="viajeros">Numero de viajeros *</label><select class="form-control" id="viajeros" required><option value="">Cuantos viajan?</option><option>1 persona</option><option>2 personas</option><option>3-4 personas</option><option>5-8 personas</option><option>Grupo de 9+</option></select></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="destino">Destino de interes *</label><select class="form-control" id="destino" required><option value="">Elige tu region</option><optgroup label="Costa"><option>Esmeraldas / Mompiche</option><option>Canoa</option><option>Puerto Lopez</option><option>Montanita</option><option>Salinas</option></optgroup><optgroup label="Sierra"><option>Quito Colonial</option><option>Volcan Cotopaxi</option><option>Laguna Quilotoa</option><option>Banos de Agua Santa</option><option>Cuenca</option></optgroup><optgroup label="Amazonia"><option>Tena / Misahualli</option><option>Puyo</option><option>Yasuni / Napo Wildlife</option><option>Limoncocha</option></optgroup><optgroup label="Galapagos"><option>Santa Cruz</option><option>Santa Cruz + Isabela</option><option>Ruta 3 islas</option><option>Galapagos en velero</option></optgroup><option>Aun no lo se, quiero asesoria</option></select></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="fecha_ida">Fecha aproximada de salida</label><input class="form-control" type="date" id="fecha_ida"></div>
+          <div class="form-group"><label class="form-label" for="fecha_vuelta">Fecha aproximada de retorno</label><input class="form-control" type="date" id="fecha_vuelta"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="metodo_pago">Metodo de pago preferido</label><select class="form-control" id="metodo_pago"><option value="">Como prefieres pagar?</option><option>Tarjeta de credito (cuotas sin interes)</option><option>Transferencia bancaria (10% descuento)</option><option>Efectivo en punto fisico (10% descuento)</option><option>Aun no lo decido</option></select></div>
+        <div class="form-group"><label class="form-label" for="comentarios">Cuentanos sobre tu viaje</label><textarea class="form-control" id="comentarios" placeholder="Celebras algo especial? Viajas con ninos? Tienes alguna preferencia de actividad? Cada detalle nos ayuda a preparar tu propuesta."></textarea></div>
+        <button type="submit" class="form-submit">Enviar solicitud &#x2192;</button>
+        <p class="form-note">Un asesor te contactara por WhatsApp en menos de 24 horas. Sin spam, sin compromisos.</p>
+      </form>
+      <div class="success-msg" id="successMsg">
+        <div style="font-size:2.5rem;margin-bottom:12px">&#x2705;</div>
+        <h3>Solicitud recibida!</h3>
+        <p>Un asesor revisara tu solicitud y te contactara pronto. Tambien puedes escribirnos directamente por WhatsApp ahora mismo.</p>
+        <a href="https://wa.me/593XXXXXXXXX" class="btn-wa" style="margin-top:20px;display:inline-flex;text-decoration:none;padding:12px 24px" target="_blank">Ir a WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. METODOS DE PAGO -->
+  <section class="pay-section">
+    <div class="reveal">
+      <div class="section-label" style="color:var(--gold)"><span style="display:inline-block;width:28px;height:1px;background:var(--gold);margin-right:14px;vertical-align:middle"></span>Opciones de pago</div>
+      <h2 class="section-title light">Metodos de pago<br><em>pensados para Ecuador</em></h2>
+      <p style="font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.52);font-weight:300;max-width:500px;margin-top:12px">Elegimos los metodos mas convenientes del mercado ecuatoriano para que pagues como prefieras.</p>
+    </div>
+    <div class="pay-grid">
+      <div class="pay-card reveal">
+        <div class="pay-icon">&#x1F4B3;</div>
+        <div class="pay-name">Tarjeta de credito</div>
+        <p class="pay-desc">Paga con Visa, Mastercard o American Express en cuotas sin interes segun tu banco. Transaccion segura con cifrado SSL.</p>
+        <div class="pay-highlight">&#x2736; 3, 6 o 12 cuotas sin interes</div>
+        <div class="pay-logos"><div class="pay-logo">Kushki</div><div class="pay-logo">PlacetoPay</div><div class="pay-logo">Visa</div><div class="pay-logo">Mastercard</div></div>
+      </div>
+      <div class="pay-card reveal reveal-d1">
+        <div class="pay-icon">&#x1F3E6;</div>
+        <div class="pay-name">Transferencia bancaria</div>
+        <p class="pay-desc">Paga desde tu banca movil. Confirma el comprobante por WhatsApp y activamos tu reserva en menos de 2 horas.</p>
+        <div class="pay-highlight">&#x2736; 10% de descuento garantizado</div>
+        <div class="pay-logos"><div class="pay-logo">Banco Pichincha</div><div class="pay-logo">Banco Guayaquil</div><div class="pay-logo">Produbanco</div></div>
+      </div>
+      <div class="pay-card reveal reveal-d2">
+        <div class="pay-icon">&#x1F4B5;</div>
+        <div class="pay-name">Pago en efectivo</div>
+        <p class="pay-desc">Sin tarjeta ni cuenta bancaria. Paga en cualquiera de nuestros tres puntos fisicos de atencion en el pais.</p>
+        <div class="pay-highlight">&#x2736; 10% de descuento · Quito · Guayaquil · Cuenca</div>
+        <div class="pay-logos"><div class="pay-logo">Quito</div><div class="pay-logo">Guayaquil</div><div class="pay-logo">Cuenca</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FAQ -->
+  <section class="faq-section">
+    <div class="reveal">
+      <div class="section-label">Preguntas frecuentes</div>
+      <h2 class="section-title">Todo lo que necesitas<br><em>saber antes de reservar</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-q"><span class="faq-q-text">Puedo personalizar mi paquete o agregar actividades?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Si, absolutamente. Nuestros paquetes son puntos de partida, no productos cerrados. Puedes agregar noches, cambiar el alojamiento, incluir actividades especificas o conectar destinos. Un asesor te acompanara sin costos ocultos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-text">Que pasa si necesito cancelar o cambiar mi viaje?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Aceptamos modificaciones sin costo hasta 15 dias antes del viaje. Para cancelaciones antes de ese plazo, aplicamos una retencion administrativa del 10%. El seguro de viaje incluido cubre cancelaciones por causas de fuerza mayor como emergencias medicas o fallecimiento.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-text">El seguro de viaje esta incluido en todos los paquetes?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Si. Todos los paquetes Andara incluyen seguro de viaje. La cobertura varia segun el nivel: los paquetes de entrada incluyen seguro de accidentes; los intermedios incluyen cobertura medica y perdida de equipaje; los premium incluyen cobertura completa con evacuacion aerea de emergencia.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-text">Tienen oficinas fisicas donde puedo ir a asesorarme?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Somos una agencia de operacion digital, lo que nos permite ofrecer precios mas competitivos. Toda nuestra asesoria se realiza por WhatsApp, email o videollamada. Contamos con tres puntos de atencion presencial en Quito, Guayaquil y Cuenca exclusivamente para pagos en efectivo.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-text">Con cuanta anticipacion debo reservar?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Recomendamos reservar con al menos 15 dias de anticipacion para garantizar disponibilidad. Podemos gestionar viajes de ultima hora con 72 horas de anticipacion segun el destino. Los paquetes Galapagos y ecolodges premium requieren minimo 3 semanas de anticipacion.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-text">Como funciona el soporte durante el viaje?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Mientras viajas con Andara tienes acceso a soporte por WhatsApp las 24 horas. Si hay un problema con tu alojamiento, un cambio de itinerario por clima o una emergencia, nuestro equipo responde en menos de 30 minutos durante horas activas y en menos de 2 horas fuera de horario. Esta es la Garantia Andara.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="nav-logo" href="index.html">And<span>a</span>ra</a><p class="footer-tagline">Agencia de viajes Ecuador. Cuatro regiones, 19 destinos, un equipo a tu lado desde el primer mensaje.</p><div class="footer-social"><a class="social-link" href="#">IG</a><a class="social-link" href="#">TK</a><a class="social-link" href="#">FB</a><a class="social-link" href="https://wa.me/593XXXXXXXXX">WA</a></div></div>
+      <div><div class="footer-col-title">Explorar</div><ul class="footer-links"><li><a href="destinos.html#costa">Costa Ecuatoriana</a></li><li><a href="destinos.html#sierra">Sierra y Andes</a></li><li><a href="destinos.html#amazonia">Amazonia</a></li><li><a href="destinos.html#galapagos">Galapagos</a></li></ul></div>
+      <div><div class="footer-col-title">Andara</div><ul class="footer-links"><li><a href="nosotros.html">Quienes somos</a></li><li><a href="testimonios.html">Testimonios</a></li><li><a href="blog.html">Guias de viaje</a></li><li><a href="nosotros.html">Nuestros aliados</a></li></ul></div>
+      <div><div class="footer-col-title">Soporte</div><ul class="footer-links"><li><a href="contacto.html">Solicitar cotizacion</a></li><li><a href="https://wa.me/593XXXXXXXXX">WhatsApp directo</a></li><li><a href="contacto.html">Preguntas frecuentes</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">&#169; 2025 <span>Andara</span> &#183; Agencia de Viajes Ecuador &#183; Todos los derechos reservados</p><p class="footer-copy">Hecho en Ecuador</p></div>
+  </footer>
+
+  <script>
+    const c=document.getElementById('cur'),r=document.getElementById('curRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px';});
+    (function l(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(l);})();
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{c.style.transform='translate(-50%,-50%) scale(2.2)';r.style.opacity='.2';});el.addEventListener('mouseleave',()=>{c.style.transform='translate(-50%,-50%) scale(1)';r.style.opacity='.55';});});
+    document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===document.body.dataset.page)a.classList.add('active');});
+    window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});
+    document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mm').classList.add('open'));
+    document.getElementById('cls').addEventListener('click',()=>document.getElementById('mm').classList.remove('open'));
+    const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+    document.querySelectorAll('.city-tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.city-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.city-info').forEach(c=>c.classList.remove('active'));tab.classList.add('active');document.getElementById('city-'+tab.dataset.city).classList.add('active');});});
+    document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
+    document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const n=document.getElementById('nombre').value;const d=document.getElementById('destino').value;const t=document.getElementById('telefono').value;if(!n||!d||!t){alert('Por favor completa los campos obligatorios marcados con *');return;}this.style.display='none';document.getElementById('successMsg').style.display='block';window.scrollTo({top:document.getElementById('successMsg').offsetTop-100,behavior:'smooth'});});
+  </script>
+</body>
+</html>

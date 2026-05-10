@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andara — Viajes que transforman Ecuador</title>
+  <meta name="description" content="Agencia de viajes Ecuador. Paquetes a medida en Costa, Sierra y Amazonía con asesoría humana real y soporte 24/7.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* HERO — reemplazar bg con foto Ecuador: "Ecuador Andes aerial" o "Cotopaxi Ecuador" en Unsplash */
+    .hero{position:relative;height:88vh;min-height:620px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1501803853268-9b06f5ef2bab?auto=format&fit=crop&w=1920&q=90') center/cover no-repeat}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,31,22,.55) 0%,rgba(13,31,22,.1) 40%,transparent 60%),linear-gradient(to top,rgba(13,31,22,.92) 0%,rgba(13,31,22,.42) 50%,transparent 100%)}
+    .hero-content{position:relative;z-index:2;padding:0 72px 88px}
+    .hero-eyebrow{display:flex;align-items:center;gap:16px;font-size:.64rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;opacity:0;animation:aUp .7s ease-out .4s forwards}
+    .hero-eyebrow span{width:38px;height:1px;background:var(--gold);display:inline-block}
+    .hero-title{font-family:var(--font-display);font-size:clamp(4.8rem,10.5vw,9.5rem);font-weight:300;line-height:.9;color:var(--white);margin-bottom:36px;opacity:0;animation:aUp .9s ease-out .6s forwards}
+    .hero-title em{font-style:italic;color:var(--gold);display:block}
+    .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+    .hero-desc{font-size:1rem;line-height:1.78;font-weight:300;color:rgba(255,255,255,.58);max-width:380px;opacity:0;animation:aUp .7s ease-out .85s forwards}
+    .hero-ctas{display:flex;flex-direction:column;align-items:flex-end;gap:16px;opacity:0;animation:aUp .7s ease-out 1s forwards}
+    .hero-btn{display:inline-flex;align-items:center;gap:14px;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green-dark);background:var(--gold);padding:17px 42px;text-decoration:none;border-radius:2px;transition:all .35s var(--ease)}
+    .hero-btn:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 16px 40px rgba(200,169,110,.32)}
+    .hero-ghost{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.48);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .3s}
+    .hero-ghost:hover{color:var(--gold)}
+    .hero-regions{position:absolute;bottom:0;left:0;right:0;display:flex;z-index:3;border-top:1px solid rgba(255,255,255,.08)}
+    .hero-reg{flex:1;padding:19px 0;text-align:center;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.60);text-decoration:none;border-right:1px solid rgba(255,255,255,.1);transition:all .3s;display:flex;align-items:center;justify-content:center;gap:9px}
+    .hero-reg:last-child{border-right:none}
+    .hero-reg:hover{color:var(--gold);background:rgba(200,169,110,.06)}
+    .hero-scroll{position:absolute;right:72px;bottom:88px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:aUp .6s ease-out 1.3s forwards}
+    .hero-scroll-line{width:1px;height:54px;background:linear-gradient(to bottom,transparent,var(--gold));animation:sPulse 2.3s ease-in-out infinite}
+    .hero-scroll-txt{font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.28);writing-mode:vertical-rl}
+    @keyframes sPulse{0%,100%{opacity:.3}50%{opacity:1}}
+    @keyframes aUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* REGIONES — reemplazar imágenes con fotos específicas de Ecuador:
+       Costa: "Esmeraldas beach Ecuador" / Sierra: "Quilotoa Ecuador" / Amazonia: "Napo river Ecuador" */
+    .regions{display:grid;grid-template-columns:repeat(4,1fr);height:90vh;min-height:560px}
+    .reg{position:relative;overflow:hidden;text-decoration:none;display:block}
+    .reg-img{position:absolute;inset:0;transition:transform .85s var(--ease)}
+    .reg:hover .reg-img{transform:scale(1.06)}
+    .reg-img img{object-fit:cover;width:100%;height:100%}
+    .reg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,31,22,.18) 0%,rgba(13,31,22,.78) 100%);transition:background .5s}
+    .reg:hover .reg-overlay{background:linear-gradient(180deg,rgba(13,31,22,.22) 0%,rgba(13,31,22,.9) 100%)}
+    .reg-divider{position:absolute;top:0;right:0;bottom:0;width:1px;background:rgba(255,255,255,.08)}
+    .reg-body{position:absolute;bottom:0;left:0;right:0;padding:0 40px 52px}
+    .reg-tag{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:0;transform:translateY(10px);transition:all .42s var(--ease)}
+    .reg:hover .reg-tag{opacity:1;transform:translateY(0)}
+    .reg-name{font-family:var(--font-display);font-size:clamp(2rem,3.2vw,3rem);font-weight:300;color:var(--white);line-height:1.02;margin-bottom:12px}
+    .reg-sub{font-size:.82rem;line-height:1.62;font-weight:300;color:rgba(255,255,255,.56);max-width:280px;opacity:0;transform:translateY(12px);transition:all .42s var(--ease) .07s}
+    .reg:hover .reg-sub{opacity:1;transform:translateY(0)}
+    .reg-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(10px);transition:all .4s var(--ease) .13s}
+    .reg:hover .reg-cta{opacity:1;transform:translateY(0)}
+
+    /* EDITORIAL */
+    .editorial{display:grid;grid-template-columns:1.1fr 1fr;min-height:68vh;background:var(--cream)}
+    .ed-left{padding:100px 64px 100px 72px;border-right:1px solid rgba(0,0,0,.07);display:flex;flex-direction:column;justify-content:center}
+    .ed-quote{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,5rem);font-weight:300;font-style:italic;line-height:1.05;color:var(--green-dark);margin-bottom:36px}
+    .ed-quote strong{color:var(--gold);font-style:italic;font-weight:300}
+    .ed-attr{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--text-light);display:flex;align-items:center;gap:14px}
+    .ed-attr::before{content:'';width:26px;height:1px;background:currentColor;flex-shrink:0}
+    .ed-right{padding:100px 72px 100px 64px;display:flex;flex-direction:column;justify-content:center;gap:26px}
+    .ed-lbl{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px}
+    .ed-lbl::before{content:'';width:24px;height:1px;background:var(--gold);flex-shrink:0}
+    .ed-txt{font-size:1.02rem;line-height:1.84;font-weight:300;color:var(--text-light)}
+    .ed-txt strong{color:var(--green-dark);font-weight:500}
+    .ed-stats{display:flex;gap:36px;padding-top:24px;border-top:1px solid rgba(0,0,0,.07);flex-wrap:wrap}
+    .ed-stat-val{font-family:var(--font-display);font-size:2.8rem;font-weight:300;color:var(--green-dark);line-height:1}
+    .ed-stat-val em{font-style:normal;color:var(--gold)}
+    .ed-stat-lbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-light);margin-top:4px}
+    .ed-link{display:inline-flex;align-items:center;gap:10px;font-size:.73rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);text-decoration:none;transition:gap .3s}
+    .ed-link:hover{gap:16px}
+
+    /* PASOS */
+    .steps{background:var(--green-dark);padding:100px 72px;position:relative;overflow:hidden}
+    .steps::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;border:1px solid rgba(200,169,110,.06);top:50%;right:-150px;transform:translateY(-50%);pointer-events:none}
+    .steps-hd{text-align:center;margin-bottom:68px;position:relative;z-index:1}
+    .steps-hd .section-label{justify-content:center}
+    .steps-hd .section-label::before{display:none}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;position:relative;z-index:1}
+    .step{padding:52px 44px;background:rgba(255,255,255,.03);border:1px solid rgba(200,169,110,.08);position:relative;transition:background .35s}
+    .step:hover{background:rgba(255,255,255,.06)}
+    .step-n{font-family:var(--font-display);font-size:7rem;font-weight:300;line-height:1;color:rgba(200,169,110,.1);position:absolute;top:16px;right:24px;pointer-events:none;transition:color .35s}
+    .step:hover .step-n{color:rgba(200,169,110,.2)}
+    .step-icon{width:48px;height:48px;border:1px solid rgba(200,169,110,.28);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:24px}
+    .step-title{font-family:var(--font-display);font-size:1.65rem;font-weight:300;color:var(--white);margin-bottom:12px}
+    .step-desc{font-size:.85rem;line-height:1.72;color:rgba(255,255,255,.48);font-weight:300}
+    .step-line{position:absolute;top:50%;right:-1px;width:1px;height:40%;background:rgba(200,169,110,.14);transform:translateY(-50%)}
+
+    /* TRUST BAND */
+    .trust-band{background:var(--green);display:flex}
+    .tb-item{flex:1;padding:52px 40px;text-align:center;border-right:1px solid rgba(255,255,255,.06);transition:background .3s}
+    .tb-item:last-child{border-right:none}
+    .tb-item:hover{background:rgba(255,255,255,.04)}
+    .tb-num{font-family:var(--font-display);font-size:3.4rem;font-weight:300;color:var(--white);line-height:1}
+    .tb-num em{font-style:normal;color:var(--gold)}
+    .tb-lbl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.36);margin-top:6px}
+
+    /* ALIADOS */
+    .partners{background:var(--white);padding:38px 72px;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(0,0,0,.05)}
+    .partners-lbl{font-size:.59rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-light);margin-right:36px;white-space:nowrap;flex-shrink:0}
+    .partners-list{display:flex;align-items:center;flex-wrap:wrap}
+    .partner{font-size:.7rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:rgba(0,0,0,.2);padding:8px 22px;border-right:1px solid rgba(0,0,0,.08);transition:color .3s}
+    .partner:last-child{border-right:none}
+    .partner:hover{color:var(--green)}
+
+    /* CTA FINAL — reemplazar bg con foto de naturaleza Ecuador */
+    .final-cta{position:relative;min-height:64vh;display:flex;align-items:center;overflow:hidden}
+    .fcta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat}
+    .fcta-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(13,31,22,.94) 0%,rgba(13,31,22,.58) 58%,rgba(13,31,22,.18) 100%)}
+    .fcta-body{position:relative;z-index:2;padding:0 72px;max-width:680px}
+    .fcta-lbl{font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .fcta-lbl::before{content:'';width:26px;height:1px;background:var(--gold);flex-shrink:0}
+    .fcta-title{font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:300;line-height:.96;color:var(--white);margin-bottom:24px}
+    .fcta-title em{font-style:italic;color:var(--gold)}
+    .fcta-sub{font-size:.97rem;font-weight:300;line-height:1.78;color:rgba(255,255,255,.56);max-width:400px;margin-bottom:44px}
+    .fcta-btns{display:flex;gap:18px;flex-wrap:wrap}
+
+    @media(max-width:1100px){
+      .hero-content{padding:0 40px 76px}.hero-scroll{right:40px;bottom:80px}
+      .editorial{grid-template-columns:1fr}
+      .ed-left{padding:72px 40px 48px;border-right:none;border-bottom:1px solid rgba(0,0,0,.07)}
+      .ed-right{padding:48px 40px 80px}
+      .steps{padding:80px 40px}.steps-grid{grid-template-columns:1fr}
+      .fcta-body{padding:0 40px}
+    }
+    @media(max-width:768px){
+      .regions{grid-template-columns:1fr 1fr}
+      .hero-content{padding:0 24px 84px}
+      .hero-bottom{flex-direction:column;align-items:flex-start;gap:24px}
+      .hero-ctas{align-items:flex-start}
+      .hero-scroll,.hero-regions{display:none}
+      .regions{grid-template-columns:1fr;height:auto}
+      .reg{height:72vw;min-height:260px}
+      .reg-tag,.reg-sub,.reg-cta{opacity:1!important;transform:none!important}
+      .ed-left{padding:64px 24px 40px}.ed-right{padding:40px 24px 64px}
+      .steps{padding:64px 24px}
+      .trust-band{flex-wrap:wrap}
+      .tb-item{flex:1 0 50%;border-bottom:1px solid rgba(255,255,255,.06)}
+      .partners{flex-direction:column;gap:20px;padding:32px 24px;text-align:center}
+      .partners-lbl{margin-right:0}.partners-list{justify-content:center}
+      .final-cta{min-height:auto}.fcta-body{padding:64px 24px;max-width:100%}
+      .fcta-bg::after{background:rgba(13,31,22,.8)}
+    }
+  </style>
+</head>
+<body data-page="inicio">
+  <div class="cursor" id="cur"></div>
+  <div class="cursor-ring" id="curRing"></div>
+  <a class="wa-float" href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20planificar%20mi%20viaje" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <nav class="site-nav" id="nav">
+    <a class="nav-logo" href="index.html">And<span>a</span>ra</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="inicio">Inicio</a></li>
+      <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
+      <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
+      <li><a href="blog.html" data-nav="blog">Blog</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+    </ul>
+    <button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mm">
+    <button class="close-menu" id="cls">&#x2715;</button>
+    <a href="index.html">Inicio</a>
+    <a href="destinos.html">Destinos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="blog.html">Blog</a>
+    <a href="contacto.html" style="color:var(--gold)">Reservar</a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span></span>Agencia de viajes Ecuador</div>
+      <h1 class="hero-title">Ecuador,<br><em>sin limites.</em></h1>
+      <div class="hero-bottom">
+        <p class="hero-desc">Diseñamos viajes únicos por Costa, Sierra, Amazonía y Galápagos. Con un equipo que te acompaña desde el primer mensaje.</p>
+        <div class="hero-ctas">
+          <a class="hero-btn" href="destinos.html">Explorar destinos <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="hero-ghost" href="paquetes.html">Ver todos los paquetes</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-regions">
+      <a class="hero-reg" href="destinos.html#costa">Costa</a>
+      <a class="hero-reg" href="destinos.html#sierra">Sierra</a>
+      <a class="hero-reg" href="destinos.html#amazonia">Amazonía</a>
+      <a class="hero-reg" href="destinos.html#galapagos">Galápagos</a>
+    </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div><span class="hero-scroll-txt">scroll</span></div>
+  </section>
+
+  <div class="regions">
+    <a class="reg" href="destinos.html#costa">
+      <div class="reg-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=85" alt="Costa Ecuatoriana" loading="lazy"></div>
+      <div class="reg-overlay"></div><div class="reg-divider"></div>
+      <div class="reg-body">
+        <div class="reg-tag">Region 01 . 5 destinos</div>
+        <div class="reg-name">Costa<br>Ecuatoriana</div>
+        <p class="reg-sub">Esmeraldas, Canoa, Puerto Lopez, Montanita y Salinas. Surf, ballenas jorobadas y gastronomia marina.</p>
+        <div class="reg-cta">Explorar Costa</div>
+      </div>
+    </a>
+    <a class="reg" href="destinos.html#sierra">
+      <div class="reg-img"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=85" alt="Sierra Ecuatoriana" loading="lazy"></div>
+      <div class="reg-overlay"></div><div class="reg-divider"></div>
+      <div class="reg-body">
+        <div class="reg-tag">Region 02 . 5 destinos</div>
+        <div class="reg-name">Andes<br>Eternos</div>
+        <p class="reg-sub">Quito colonial, Cotopaxi, Laguna Quilotoa, Banos y Cuenca. Volcanes, haciendas y cultura viva.</p>
+        <div class="reg-cta">Explorar Sierra</div>
+      </div>
+    </a>
+    <a class="reg" href="destinos.html#amazonia">
+      <div class="reg-img"><img src="https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?auto=format&fit=crop&w=800&q=85" alt="Amazonía Ecuatoriana — vista aérea selva y ríos del Napo" loading="lazy"></div>
+      <div class="reg-overlay"></div>
+      <div class="reg-body">
+        <div class="reg-tag">Region 03 . 5 destinos</div>
+        <div class="reg-name">Amazonía<br>Viva</div>
+        <p class="reg-sub">Yasuni, Tena, Napo Wildlife Center, Limoncocha y Misahualli. El pulmon del mundo en estado puro.</p>
+        <div class="reg-cta">Explorar Amazonia</div>
+      </div>
+    </a>
+
+    <a class="reg" href="destinos.html#galapagos">
+      <div class="reg-img"><img src="https://images.unsplash.com/photo-1706957614198-8d2e5f0ed6ea?auto=format&fit=crop&w=800&q=85" alt="Galápagos Ecuador — islas y playa turquesa (Heidi Bruce / Unsplash)" loading="lazy"></div>
+      <div class="reg-overlay"></div>
+      <div class="reg-body">
+        <div class="reg-tag">Región 04 · Destino exclusivo</div>
+        <div class="reg-name">Galápagos<br>Mágico</div>
+        <p class="reg-sub">Santa Cruz, Isabela, San Cristóbal. Iguanas marinas, tortugas gigantes y la biodiversidad más única del planeta.</p>
+        <div class="reg-cta">Explorar Galápagos →</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="editorial">
+    <div class="ed-left reveal">
+      <blockquote class="ed-quote">"Ecuador no<br>se describe.<br><strong>Se vive."</strong></blockquote>
+      <div class="ed-attr">Andara — Agencia de viajes Ecuador</div>
+    </div>
+    <div class="ed-right reveal reveal-d1">
+      <div class="ed-lbl">Nuestra esencia</div>
+      <p class="ed-txt">Somos la agencia de viajes pensada para el viajero ecuatoriano moderno. Con experiencia directa en cada destino, nuestro equipo planifica tu viaje de principio a fin y te acompaña en cada etapa del camino.</p>
+      <p class="ed-txt">Costa, Sierra, Amazonía y Galápagos. Cuatro regiones. Quince destinos. Un equipo que te acompaña y responde cuando más lo necesitas.</p>
+      <div class="ed-stats">
+        <div><div class="ed-stat-val">15<em>+</em></div><div class="ed-stat-lbl">Destinos</div></div>
+        <div><div class="ed-stat-val">4</div><div class="ed-stat-lbl">Regiones</div></div>
+        <div><div class="ed-stat-val">24<em>h</em></div><div class="ed-stat-lbl">Soporte</div></div>
+      </div>
+      <a class="ed-link" href="nosotros.html">Conocer mas sobre Andara</a>
+    </div>
+  </div>
+
+  <section class="steps">
+    <div class="steps-hd reveal">
+      <div class="section-label" style="justify-content:center">Asi de simple</div>
+      <h2 class="section-title light" style="text-align:center;margin-top:10px">Tu viaje en<br><em>tres pasos</em></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal"><div class="step-n">01</div><div class="step-icon">&#x1F4AC;</div><div class="step-title">Cuéntanos tu viaje</div><p class="step-desc">Escríbenos por WhatsApp. Sin formularios largos. Solo dinos destino, fechas y con quién viajas. Un asesor real te responde en minutos.</p><div class="step-line"></div></div>
+      <div class="step reveal reveal-d1"><div class="step-n">02</div><div class="step-icon">&#x1F4E9;</div><div class="step-title">Recibe tu propuesta</div><p class="step-desc">En menos de 24 horas tienes una propuesta personalizada con destinos, alojamiento, actividades y precio. La ajustamos hasta que sea perfecta.</p><div class="step-line"></div></div>
+      <div class="step reveal reveal-d2"><div class="step-n">03</div><div class="step-icon">&#x1F6E1;&#xFE0F;</div><div class="step-title">Viaja sin preocupaciones</div><p class="step-desc">Confirma y nosotros gestionamos todo. Vuelos, hoteles, actividades y seguro. Soporte 24/7 desde que partes hasta que regresas a casa.</p></div>
+    </div>
+  </section>
+
+  <div class="trust-band reveal">
+    <div class="tb-item"><div class="tb-num">15<em>+</em></div><div class="tb-lbl">Destinos en Ecuador</div></div>
+    <div class="tb-item"><div class="tb-num">19</div><div class="tb-lbl">Paquetes disponibles</div></div>
+    <div class="tb-item"><div class="tb-num">24<em>h</em></div><div class="tb-lbl">Soporte en destino</div></div>
+    <div class="tb-item"><div class="tb-num">3</div><div class="tb-lbl">Pasos para reservar</div></div>
+  </div>
+
+  <div class="partners reveal">
+    <span class="partners-lbl">Respaldados por</span>
+    <div class="partners-list">
+      <span class="partner">LATAM Airlines</span><span class="partner">Marriott</span>
+      <span class="partner">Amadeus</span><span class="partner">CAPTUR</span>
+      <span class="partner">Kushki</span><span class="partner">PlacetoPay</span>
+    </div>
+  </div>
+
+  <section class="final-cta">
+    <div class="fcta-bg"></div>
+    <div class="fcta-body reveal">
+      <div class="fcta-lbl">Listo para el siguiente paso?</div>
+      <h2 class="fcta-title">Tu proxima<br>aventura<br><em>te espera.</em></h2>
+      <p class="fcta-sub">Encuentra el paquete perfecto o cuentanos tu idea y la convertimos en experiencia real.</p>
+      <div class="fcta-btns">
+        <a class="btn-primary" href="paquetes.html">Ver paquetes <svg width="13" height="9" viewBox="0 0 13 9" fill="none"><path d="M1 4.5h11M7.5 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn-wa" href="https://wa.me/593XXXXXXXXX" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">And<span>a</span>ra</a>
+        <p class="footer-tagline">Agencia de viajes Ecuador. Cuatro regiones, 19 destinos, un equipo a tu lado desde el primer mensaje.</p>
+        <div class="footer-social">
+          <a class="social-link" href="#" aria-label="Instagram">IG</a>
+          <a class="social-link" href="#" aria-label="TikTok">TK</a>
+          <a class="social-link" href="#" aria-label="Facebook">FB</a>
+          <a class="social-link" href="https://wa.me/593XXXXXXXXX" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Explorar</div>
+        <ul class="footer-links">
+          <li><a href="destinos.html#costa">Costa Ecuatoriana</a></li>
+          <li><a href="destinos.html#sierra">Sierra y Andes</a></li>
+          <li><a href="destinos.html#amazonia">Amazonia</a></li>
+          <li><a href="destinos.html#galapagos">Galapagos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Andara</div>
+        <ul class="footer-links">
+          <li><a href="nosotros.html">Quienes somos</a></li>
+          <li><a href="testimonios.html">Testimonios</a></li>
+          <li><a href="blog.html">Guias de viaje</a></li>
+          <li><a href="nosotros.html">Nuestros aliados</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Soporte</div>
+        <ul class="footer-links">
+          <li><a href="contacto.html">Solicitar cotizacion</a></li>
+          <li><a href="https://wa.me/593XXXXXXXXX">WhatsApp directo</a></li>
+          <li><a href="contacto.html">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&#169; 2025 <span>Andara</span> &#183; Agencia de Viajes Ecuador &#183; Todos los derechos reservados</p>
+      <p class="footer-copy">Hecho en Ecuador</p>
+    </div>
+  </footer>
+
+  <script>
+    const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    (function l(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(l);})();
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.opacity='.2';});el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.55';});});
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+    document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===document.body.dataset.page)a.classList.add('active');});
+    const hbg=document.getElementById('hbg'),mm=document.getElementById('mm'),cls=document.getElementById('cls');
+    hbg.addEventListener('click',()=>mm.classList.add('open'));
+    cls.addEventListener('click',()=>mm.classList.remove('open'));
+    const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+  </script>
+</body>
+</html>

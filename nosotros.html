@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros — Andara Agencia de Viajes Ecuador</title>
+  <meta name="description" content="Conoce a Andara: agencia de viajes Ecuador fundada para eliminar la incertidumbre del viaje. Historia, valores y aliados estrategicos.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .mission{background:var(--white);padding:100px 72px}
+    .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .mission-img{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:4/5}
+    .mission-img img{object-fit:cover;width:100%;height:100%}
+    .mission-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(13,31,22,.92));padding:40px 30px 28px;font-family:var(--font-display);font-size:1.4rem;font-weight:300;font-style:italic;color:var(--gold);line-height:1.3}
+    .mission-text p{font-size:1rem;line-height:1.88;color:var(--text-light);font-weight:300;margin-bottom:20px}
+    .jtbd{background:var(--green-dark);padding:28px 32px;border-radius:3px;margin-top:28px}
+    .jtbd-label{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .jtbd-quote{font-family:var(--font-display);font-size:1.3rem;font-style:italic;font-weight:300;color:var(--white);line-height:1.4}
+    .values-section{background:var(--cream);padding:100px 72px}
+    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px}
+    .val-card{background:var(--white);padding:44px 36px;transition:background .3s}
+    .val-card:hover{background:var(--cream-dark)}
+    .val-num{font-family:var(--font-display);font-size:3rem;font-weight:300;color:rgba(200,169,110,.35);line-height:1;margin-bottom:12px}
+    .val-icon{font-size:2.2rem;margin-bottom:16px}
+    .val-name{font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--green-dark);margin-bottom:12px}
+    .val-text{font-size:.86rem;line-height:1.72;color:var(--text-light);font-weight:300}
+    /* DIFERENCIADORES - sin nombres de competidores */
+    .dif-section{background:var(--green-dark);padding:100px 72px;position:relative;overflow:hidden}
+    .dif-section::before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;border:1px solid rgba(200,169,110,.06);top:50%;right:-150px;transform:translateY(-50%);pointer-events:none}
+    .dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;position:relative;z-index:1}
+    .dif-card{background:rgba(255,255,255,.04);padding:44px 36px;border:1px solid rgba(200,169,110,.1);transition:background .3s}
+    .dif-card:hover{background:rgba(255,255,255,.07)}
+    .dif-icon{font-size:2.2rem;margin-bottom:20px}
+    .dif-title{font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);margin-bottom:14px}
+    .dif-text{font-size:.86rem;line-height:1.72;color:rgba(255,255,255,.55);font-weight:300}
+    .dif-badge{display:inline-block;margin-top:18px;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,169,110,.3);padding:6px 16px;border-radius:2px}
+    /* ALIADOS */
+    .allies-section{background:var(--cream-dark);padding:100px 72px}
+    .allies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+    .ally-card{background:var(--white);padding:36px 32px;border-radius:3px;transition:box-shadow .3s,transform .3s}
+    .ally-card:hover{box-shadow:0 16px 40px rgba(13,31,22,.09);transform:translateY(-4px)}
+    .ally-type{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .ally-name{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--green-dark);margin-bottom:8px}
+    .ally-desc{font-size:.84rem;line-height:1.68;color:var(--text-light);font-weight:300;margin-bottom:12px}
+    .ally-benefit{font-size:.78rem;font-weight:500;color:var(--green-mid);padding-top:10px;border-top:1px solid rgba(0,0,0,.06)}
+    /* COMPROMISO */
+    .compromiso-section{background:var(--white);padding:100px 72px}
+    .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:48px}
+    .comp-img{border-radius:3px;overflow:hidden;aspect-ratio:4/3}
+    .comp-img img{object-fit:cover;width:100%;height:100%}
+    .comp-text p{font-size:.97rem;line-height:1.82;color:var(--text-light);font-weight:300;margin-bottom:18px}
+    .comp-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:24px}
+    .comp-list li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;line-height:1.6;color:var(--text);font-weight:300}
+    .comp-list li::before{content:"&#x2736;";color:var(--gold);font-size:.7rem;margin-top:4px;flex-shrink:0}
+    @media(max-width:1100px){.mission,.values-section,.dif-section,.allies-section,.compromiso-section{padding:80px 40px}.mission-grid,.comp-grid{grid-template-columns:1fr;gap:40px}.values-grid{grid-template-columns:1fr 1fr}.dif-grid,.allies-grid{grid-template-columns:1fr;gap:2px}}
+    @media(max-width:768px){.mission,.values-section,.dif-section,.allies-section,.compromiso-section{padding:60px 24px}.values-grid,.allies-grid{grid-template-columns:1fr}.comp-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body data-page="nosotros">
+  <div class="cursor" id="cur"></div><div class="cursor-ring" id="curRing"></div>
+  <a class="wa-float" href="https://wa.me/593XXXXXXXXX?text=Hola%20Andara%2C%20quiero%20saber%20m%C3%A1s%20sobre%20ustedes" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+  <nav class="site-nav scrolled" id="nav">
+    <a class="nav-logo" href="index.html">And<span>a</span>ra</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="inicio">Inicio</a></li>
+      <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
+      <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
+      <li><a href="blog.html" data-nav="blog">Blog</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+    </ul>
+    <button class="hamburger" id="hbg" aria-label="Menú"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mm">
+    <button class="close-menu" id="cls">&#x2715;</button>
+    <a href="index.html">Inicio</a><a href="destinos.html">Destinos</a>
+    <a href="nosotros.html">Nosotros</a><a href="blog.html">Blog</a>
+    <a href="contacto.html" style="color:var(--gold)">Reservar</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-img"><img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1920&q=85" alt="Equipo Andara Ecuador" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=85'"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="index.html">Inicio</a> &#x203A; Nosotros</div>
+      <div class="section-label">Agencia de viajes &#183; Ecuador</div>
+      <h1 class="section-title light">Más que una agencia,<br><em>tu equipo de viaje</em></h1>
+    </div>
+  </div>
+
+  <!-- MISIÓN -->
+  <section class="mission">
+    <div class="mission-grid">
+      <div class="mission-img reveal">
+        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=85" alt="Ecuador paisaje" onerror="this.src='https://images.unsplash.com/photo-1643302408853-a0171accc39b?auto=format&fit=crop&w=800&q=85'">
+        <div class="mission-caption">"Eliminar la incertidumbre del viaje, no la aventura."</div>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="section-label">Nuestra historia</div>
+        <h2 class="section-title">Nacimos para hacer<br><em>el viaje más simple</em></h2>
+        <p>Andara nació de una frustración que conocemos bien: planificar un viaje en Ecuador consume días de investigación, múltiples llamadas, precios opacos y la angustia constante de no saber si lo que reservaste realmente cumplirá lo que promete.</p>
+        <p>Somos una agencia de viajes con un principio irrenunciable: la tecnología para la velocidad, las personas para la confianza. Combinamos la agilidad de un proceso 100% digital con la calidez de un equipo que conoce cada destino que ofrece.</p>
+        <p>Operamos en las cuatro regiones más extraordinarias del Ecuador: Costa, Sierra, Amazonía y Galápagos. En cada una, contamos con proveedores verificados, aliados estratégicos y la experiencia para garantizar que cada detalle esté resuelto antes de que el viajero llegue al aeropuerto.</p>
+        <div class="jtbd">
+          <div class="jtbd-label">Nuestro propósito</div>
+          <div class="jtbd-quote">"Que viajar en Ecuador tome 3 clics, no 3 semanas."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section class="values-section">
+    <div class="reveal">
+      <div class="section-label">En qué creemos</div>
+      <h2 class="section-title">Cuatro valores que<br><em>guían cada viaje</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="val-card reveal">
+        <div class="val-num">01</div><div class="val-icon">&#x1F9ED;</div>
+        <div class="val-name">Confianza</div>
+        <p class="val-text">No prometemos lo que no podemos cumplir. Cada proveedor, hotel y operador incluido en nuestros paquetes ha sido verificado por nuestro equipo. Si algo falla, lo resolvemos en menos de 2 horas o devolvemos la diferencia.</p>
+      </div>
+      <div class="val-card reveal reveal-d1">
+        <div class="val-num">02</div><div class="val-icon">&#x2736;</div>
+        <div class="val-name">Personalización</div>
+        <p class="val-text">No creemos en paquetes genéricos. Cada viajero tiene un ritmo, un presupuesto y prioridades únicas. Nuestro modelo combina destinos base con la flexibilidad de adaptarlos a lo que necesitas, sin costos ocultos.</p>
+      </div>
+      <div class="val-card reveal reveal-d2">
+        <div class="val-num">03</div><div class="val-icon">&#x26A1;</div>
+        <div class="val-name">Agilidad</div>
+        <p class="val-text">En Andara respondemos en menos de 24 horas con una propuesta completa. Nuestro proceso está diseñado para que tomes decisiones informadas y rápidas. Sin esperas, sin burocracia, sin formularios interminables.</p>
+      </div>
+      <div class="val-card reveal reveal-d3">
+        <div class="val-num">04</div><div class="val-icon">&#x1F6E1;&#xFE0F;</div>
+        <div class="val-name">Seguridad</div>
+        <p class="val-text">Cada paquete incluye seguro de viaje. Tenemos protocolos claros para emergencias en destino y nuestro soporte 24/7 existe exactamente para los momentos en que más se necesita un equipo confiable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LO QUE NOS DISTINGUE (sin nombres de competidores) -->
+  <section class="dif-section">
+    <div class="reveal" style="position:relative;z-index:1">
+      <div class="section-label" style="color:var(--gold)"><span style="display:inline-block;width:28px;height:1px;background:var(--gold);margin-right:14px;vertical-align:middle"></span>Nuestra propuesta</div>
+      <h2 class="section-title light">Lo que nos<br><em>hace diferentes</em></h2>
+      <p style="color:rgba(255,255,255,.55);font-size:1rem;font-weight:300;line-height:1.8;max-width:560px;margin-top:12px">En Andara combinamos tres elementos que raramente se encuentran juntos en el mercado de viajes en Ecuador.</p>
+    </div>
+    <div class="dif-grid">
+      <div class="dif-card reveal">
+        <div class="dif-icon">&#x26A1;</div>
+        <div class="dif-title">Velocidad sin perder el servicio</div>
+        <p class="dif-text">Reserva en minutos desde tu teléfono. Todo el proceso es digital, pero siempre hay un asesor real detrás. Sin filas, sin traslados a una oficina, sin esperar días por una cotización.</p>
+        <span class="dif-badge">Cotización en menos de 24h</span>
+      </div>
+      <div class="dif-card reveal reveal-d1">
+        <div class="dif-icon">&#x1F4B0;</div>
+        <div class="dif-title">Precio justo, calidad garantizada</div>
+        <p class="dif-text">Ofrecemos experiencias de alto nivel a precios accesibles y transparentes. Cada proveedor está verificado, cada paquete incluye seguro, y nuestra garantía de respuesta en 2 horas te da la tranquilidad que mereces.</p>
+        <span class="dif-badge">Garantía Andara</span>
+      </div>
+      <div class="dif-card reveal reveal-d2">
+        <div class="dif-icon">&#x1F91D;</div>
+        <div class="dif-title">Acompañamiento en cada etapa</div>
+        <p class="dif-text">No desaparecemos después de confirmar tu reserva. Antes del viaje te preparamos, durante el viaje estamos disponibles 24/7, y después del viaje valoramos tu experiencia para mejorar continuamente.</p>
+        <span class="dif-badge">Soporte 24/7 en destino</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALIADOS -->
+  <section class="allies-section">
+    <div class="reveal">
+      <div class="section-label">Nuestros aliados</div>
+      <h2 class="section-title">Respaldados por los<br><em>mejores del sector</em></h2>
+      <p style="font-size:1rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:520px;margin-top:12px">Nuestras alianzas estratégicas nos permiten ofrecer tarifas preferenciales, inventario garantizado y respaldo institucional en cada destino.</p>
+    </div>
+    <div class="allies-grid">
+      <div class="ally-card reveal"><div class="ally-type">Aerolíneas</div><div class="ally-name">LATAM Airlines</div><p class="ally-desc">Tarifas preferenciales y disponibilidad prioritaria en vuelos nacionales e internacionales para armar paquetes completos con conexiones garantizadas.</p><div class="ally-benefit">&#x2192; Tarifas preferenciales garantizadas</div></div>
+      <div class="ally-card reveal reveal-d1"><div class="ally-type">Alojamiento</div><div class="ally-name">Marriott International</div><p class="ally-desc">Convenios corporativos con cadenas hoteleras de primer nivel. Alojamiento verificado con estándares internacionales de calidad y servicio en todo el mundo.</p><div class="ally-benefit">&#x2192; Precios corporativos confirmados</div></div>
+      <div class="ally-card reveal reveal-d2"><div class="ally-type">Tecnología GDS</div><div class="ally-name">Amadeus IT Group</div><p class="ally-desc">Sistema global de distribución para gestión de reservas, emisión de tickets y disponibilidad en tiempo real. Elimina errores operativos y overbooking.</p><div class="ally-benefit">&#x2192; Reservas sincronizadas en tiempo real</div></div>
+      <div class="ally-card reveal"><div class="ally-type">Gremio turístico</div><div class="ally-name">CAPTUR Ecuador</div><p class="ally-desc">Cámara Provincial de Turismo. Respaldo institucional, acceso a normativas y red de networking con operadores turísticos certificados de Ecuador.</p><div class="ally-benefit">&#x2192; Respaldo legal e institucional</div></div>
+      <div class="ally-card reveal reveal-d1"><div class="ally-type">Seguros de viaje</div><div class="ally-name">Aseguradoras especializadas</div><p class="ally-desc">Alianzas con aseguradoras líderes en turismo. Cobertura médica, cancelaciones, pérdida de equipaje y evacuación de emergencia incluidos en cada paquete.</p><div class="ally-benefit">&#x2192; Cobertura incluida en todos los paquetes</div></div>
+      <div class="ally-card reveal reveal-d2"><div class="ally-type">Pagos digitales</div><div class="ally-name">Kushki &#183; PlacetoPay</div><p class="ally-desc">Pasarelas de pago líderes en Ecuador. Transacciones seguras, diferidos de 3 a 12 cuotas y múltiples métodos de pago adaptados al mercado local.</p><div class="ally-benefit">&#x2192; Cuotas sin interés disponibles</div></div>
+    </div>
+  </section>
+
+  <!-- NUESTRO COMPROMISO (reemplaza sección demográfica) -->
+  <section class="compromiso-section">
+    <div class="reveal">
+      <div class="section-label">Nuestro compromiso</div>
+      <h2 class="section-title">Andara existe para<br><em>quienes saben que el tiempo vale</em></h2>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-img reveal">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=85" alt="Viajeros en Ecuador" onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=85'">
+      </div>
+      <div class="reveal reveal-d1">
+        <p>Andara está pensada para quienes buscan experiencias auténticas en Ecuador sin la carga de organizar cada detalle. Para familias y parejas que quieren momentos memorables con total tranquilidad.</p>
+        <p>Entendemos que detrás de cada viaje hay una historia: un cumpleaños, un aniversario, unas vacaciones muy esperadas. Por eso cada paquete se trata con la misma atención que le daríamos al nuestro propio.</p>
+        <ul class="comp-list">
+          <li>Para quienes valoran su tiempo y prefieren que un equipo confiable gestione la logística.</li>
+          <li>Para viajeros que entienden que la tranquilidad vale más que la opción más barata.</li>
+          <li>Para quienes creen que viajar en Ecuador merece ser una experiencia memorable, no un dolor de cabeza.</li>
+        </ul>
+        <div style="margin-top:28px">
+          <a href="contacto.html" class="btn-primary">Planifica tu viaje &#x2192;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="nav-logo" href="index.html">And<span>a</span>ra</a><p class="footer-tagline">Agencia de viajes Ecuador. Cuatro regiones, 19 destinos, un equipo a tu lado desde el primer mensaje.</p><div class="footer-social"><a class="social-link" href="#">IG</a><a class="social-link" href="#">TK</a><a class="social-link" href="#">FB</a><a class="social-link" href="https://wa.me/593XXXXXXXXX">WA</a></div></div>
+      <div><div class="footer-col-title">Explorar</div><ul class="footer-links"><li><a href="destinos.html#costa">Costa Ecuatoriana</a></li><li><a href="destinos.html#sierra">Sierra y Andes</a></li><li><a href="destinos.html#amazonia">Amazonía</a></li><li><a href="destinos.html#galapagos">Galápagos</a></li></ul></div>
+      <div><div class="footer-col-title">Andara</div><ul class="footer-links"><li><a href="nosotros.html">Quiénes somos</a></li><li><a href="testimonios.html">Testimonios</a></li><li><a href="blog.html">Guías de viaje</a></li><li><a href="nosotros.html">Nuestros aliados</a></li></ul></div>
+      <div><div class="footer-col-title">Soporte</div><ul class="footer-links"><li><a href="contacto.html">Solicitar cotización</a></li><li><a href="https://wa.me/593XXXXXXXXX">WhatsApp directo</a></li><li><a href="contacto.html">Preguntas frecuentes</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">&#169; 2025 <span>Andara</span> &#183; Agencia de Viajes Ecuador &#183; Todos los derechos reservados</p><p class="footer-copy">Hecho en Ecuador</p></div>
+  </footer>
+
+  <script>
+    const c=document.getElementById('cur'),r=document.getElementById('curRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px';});
+    (function l(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(l);})();
+    document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{c.style.transform='translate(-50%,-50%) scale(2.2)';r.style.opacity='.2';});el.addEventListener('mouseleave',()=>{c.style.transform='translate(-50%,-50%) scale(1)';r.style.opacity='.55';});});
+    document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===document.body.dataset.page)a.classList.add('active');});
+    window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});
+    document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mm').classList.add('open'));
+    document.getElementById('cls').addEventListener('click',()=>document.getElementById('mm').classList.remove('open'));
+    const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+  </script>
+</body>
+</html>
