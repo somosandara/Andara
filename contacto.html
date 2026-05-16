@@ -99,6 +99,47 @@
   gtag('js', new Date());
   gtag('config', 'G-T6GSN4Z406');
 </script>
+
+<style id="mobile-opt">
+/* ── contacto.html mobile ≤640px ── */
+@media (max-width:640px){
+  /* WA Hero */
+  .wa-hero{padding:48px 22px;flex-direction:column;gap:32px}
+  .wa-card{min-width:auto;width:100%;padding:32px 24px}
+  .wa-stats{gap:20px}
+  .ws-val{font-size:1.3rem}
+  /* Contact layout */
+  .contact-layout{grid-template-columns:1fr}
+  .contact-info,.contact-form-side{padding:48px 22px}
+  /* City tabs */
+  .city-tabs{gap:1px}
+  .city-tab{padding:9px 4px;font-size:.65rem}
+  /* Form */
+  .form-row{grid-template-columns:1fr;gap:0}
+  /* CRÍTICO: iOS no hace zoom en inputs de 16px */
+  .form-control,select.form-control,textarea.form-control{font-size:16px!important;min-height:44px}
+  textarea.form-control{min-height:100px}
+  .form-submit{min-height:52px;font-size:.8rem}
+  .form-title{font-size:1.6rem}
+  /* Social grid */
+  .social-grid{grid-template-columns:1fr}
+  /* Pagos */
+  .pay-section{padding:64px 22px}
+  .pay-grid{grid-template-columns:1fr;gap:2px}
+  .pay-card{padding:32px 24px}
+  /* FAQ */
+  .faq-section{padding:64px 22px}
+  .faq-q-text{font-size:1rem}
+  /* WA card btn */
+  .wa-card-btn{min-height:48px;display:flex;align-items:center;justify-content:center;font-size:.75rem}
+}
+@media (max-width:480px){
+  .wa-hero{padding:40px 18px}
+  .contact-info,.contact-form-side{padding:40px 18px}
+  .city-tab{font-size:.6rem;padding:8px 2px}
+}
+</style>
+
 </head>
 <body data-page="contacto">
   <div class="cursor" id="cur"></div><div class="cursor-ring" id="curRing"></div>
@@ -110,7 +151,7 @@
       <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
       <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
       <li><a href="blog.html" data-nav="blog">Blog</a></li>
-      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto" onclick="gtag('event','reservar_click',{location:'navegacion',pagina:'contacto'})">Reservar</a></li>
     </ul>
     <button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -148,7 +189,7 @@
         <div class="wa-card-icon">&#x1F4AC;</div>
         <div class="wa-card-title">WhatsApp Business</div>
         <p class="wa-card-sub">Comparte tu destino, fechas y número de viajeros. Recibirás tu propuesta el mismo día.</p>
-        <a href="https://wa.me/593960943582?text=Hola%20Andara!%20Quiero%20planificar%20un%20viaje.%20Mi%20destino%20es%3A" class="wa-card-btn" target="_blank" rel="noopener">&#x2192; Abrir WhatsApp ahora</a>
+        <a href="https://wa.me/593960943582?text=Hola%20Andara!%20Quiero%20planificar%20un%20viaje.%20Mi%20destino%20es%3A" class="wa-card-btn" onclick="gtag('event','whatsapp_click',{button_location:'hero_contacto'})" target="_blank" rel="noopener">&#x2192; Abrir WhatsApp ahora</a>
         <div class="wa-card-note">+593 96 094 3582 · L-V 8:00-18:00<br>Soporte 24/7 para viajeros activos</div>
       </div>
     </div>
@@ -164,9 +205,9 @@
       <div class="info-block reveal">
         <div class="info-block-title">Puntos de atención</div>
         <div class="city-tabs" id="cityTabs">
-          <button class="city-tab active" data-city="quito">Quito</button>
-          <button class="city-tab" data-city="guayaquil">Guayaquil</button>
-          <button class="city-tab" data-city="cuenca">Cuenca</button>
+          <button class="city-tab active" data-city="quito" onclick="gtag('event','city_tab_click',{ciudad:'quito'})">Quito</button>
+          <button class="city-tab" data-city="guayaquil" onclick="gtag('event','city_tab_click',{ciudad:'guayaquil'})">Guayaquil</button>
+          <button class="city-tab" data-city="cuenca" onclick="gtag('event','city_tab_click',{ciudad:'cuenca'})">Cuenca</button>
         </div>
         <div class="city-info active" id="city-quito"><div class="info-item"><div class="info-icon">&#x1F4CD;</div><div class="info-text"><strong>Quito — Sede principal</strong><span>Asesoría completa, salidas organizadas y punto de pago en efectivo. Especialistas en rutas Sierra y Amazonía.</span></div></div></div>
         <div class="city-info" id="city-guayaquil"><div class="info-item"><div class="info-icon">&#x1F4CD;</div><div class="info-text"><strong>Guayaquil</strong><span>Asesoría digital y presencial. Salidas desde GYE a Costa y Galápagos. Punto de pago en efectivo.</span></div></div></div>
@@ -267,27 +308,27 @@
     </div>
     <div class="faq-list reveal">
       <div class="faq-item open">
-        <button class="faq-q"><span class="faq-q-text">¿Puedo personalizar mi paquete o agregar actividades?</span><span class="faq-icon">+</span></button>
+        <button class="faq-q" onclick="gtag('event','faq_open',{pregunta:'personalizar_paquete'})" data-qa><span class="faq-q-text">¿Puedo personalizar mi paquete o agregar actividades?</span><span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Si, absolutamente. Nuestros paquetes son puntos de partida, no productos cerrados. Puedes agregar noches, cambiar el alojamiento, incluir actividades específicas o conectar destinos. Un asesor te acompanara sin costos ocultos.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span class="faq-q-text">¿Qué pasa si necesito cancelar o cambiar mi viaje?</span><span class="faq-icon">+</span></button>
+        <button class="faq-q" onclick="gtag('event','faq_open',{pregunta:'cancelar_cambiar'})" data-qa><span class="faq-q-text">¿Qué pasa si necesito cancelar o cambiar mi viaje?</span><span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Aceptamos modificaciones sin costo hasta 15 dias antes del viaje. Para cancelaciones antes de ese plazo, aplicamos una retención administrativa del 10%. El seguro de viaje incluido cubre cancelaciones por causas de fuerza mayor como emergencias medicas o fallecimiento.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span class="faq-q-text">¿El seguro de viaje está incluido en todos los paquetes?</span><span class="faq-icon">+</span></button>
+        <button class="faq-q" onclick="gtag('event','faq_open',{pregunta:'seguro_viaje'})" data-qa><span class="faq-q-text">¿El seguro de viaje está incluido en todos los paquetes?</span><span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Si. Todos los paquetes Andara incluyen seguro de viaje. La cobertura varia según el nivel: los paquetes de entrada incluyen seguro de accidentes; los intermedios incluyen cobertura medica y perdida de equipaje; los premium incluyen cobertura completa con evacuación aerea de emergencia.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span class="faq-q-text">¿Tienen oficinas fisicas donde puedo ir a asesorarme?</span><span class="faq-icon">+</span></button>
+        <button class="faq-q" onclick="gtag('event','faq_open',{pregunta:'oficinas_fisicas'})" data-qa><span class="faq-q-text">¿Tienen oficinas fisicas donde puedo ir a asesorarme?</span><span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Somos una agencia de operación digital, lo que nos permite ofrecer precios más competitivos. Toda nuestra asesoría se realiza por WhatsApp, email o videollamada. Contamos con tres puntos de atención presencial en Quito, Guayaquil y Cuenca exclusivamente para pagos en efectivo.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span class="faq-q-text">¿Con cuánta anticipación debo reservar?</span><span class="faq-icon">+</span></button>
+        <button class="faq-q" onclick="gtag('event','faq_open',{pregunta:'anticipacion_reserva'})" data-qa><span class="faq-q-text">¿Con cuánta anticipación debo reservar?</span><span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Recomendamos reservar con al menos 15 dias de anticipacion para garantizar disponibilidad. Podemos gestionar viajes de ultima hora con 72 horas de anticipacion según el destino. Los paquetes Galápagos y ecolodges premium requieren mínimo 3 semanas de anticipación.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span class="faq-q-text">¿Cómo funciona el soporte durante el viaje?</span><span class="faq-icon">+</span></button>
+        <button class="faq-q" onclick="gtag('event','faq_open',{pregunta:'soporte_destino'})" data-qa><span class="faq-q-text">¿Cómo funciona el soporte durante el viaje?</span><span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Mientras viajas con Andara tienes acceso a soporte por WhatsApp las 24 horas. Si hay un problema con tu alojamiento, un cambio de itinerario por clima o una emergencia, nuestro equipo responde en menos de 30 minutos durante horas activas y en menos de 2 horas fuera de horario. Esta es la Garantia Andara.</div></div>
       </div>
     </div>
@@ -317,7 +358,7 @@
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
     document.querySelectorAll('.city-tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.city-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.city-info').forEach(c=>c.classList.remove('active'));tab.classList.add('active');document.getElementById('city-'+tab.dataset.city).classList.add('active');});});
     document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
-    document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const n=document.getElementById('nombre').value;const d=document.getElementById('destino').value;const t=document.getElementById('telefono').value;if(!n||!d||!t){alert('Por favor completa los campos obligatorios marcados con *');return;}this.style.display='none';document.getElementById('successMsg').style.display='block';window.scrollTo({top:document.getElementById('successMsg').offsetTop-100,behavior:'smooth'});});
+    document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const n=document.getElementById('nombre').value;const d=document.getElementById('destino').value;const t=document.getElementById('telefono').value;if(!n||!d||!t){alert('Por favor completa los campos obligatorios marcados con *');return;}gtag('event','form_submit',{form_tipo:'cotizacion',destino:document.getElementById('destino').value||'sin_seleccion'});this.style.display='none';document.getElementById('successMsg').style.display='block';window.scrollTo({top:document.getElementById('successMsg').offsetTop-100,behavior:'smooth'});});
   </script>
 </body>
 </html>

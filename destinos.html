@@ -501,11 +501,58 @@ textarea.form-control { resize: vertical; min-height: 110px; }
   gtag('js', new Date());
   gtag('config', 'G-T6GSN4Z406');
 </script>
+
+<style id="mobile-opt">
+/* ── destinos.html mobile ≤640px ── */
+@media (max-width:640px){
+  /* Region tabs */
+  .region-tabs,.rtabs{padding:0}
+  .region-tab,.rtab{padding:14px 20px;font-size:.68rem;letter-spacing:.09em}
+  /* Region sections */
+  .region-section,.rsec{padding:52px 22px 0}
+  /* Region hero intro */
+  .region-block-header,.rintro{grid-template-columns:1fr;gap:28px}
+  .rintro-img{aspect-ratio:16/10}
+  /* Destination/package grid */
+  .dest-grid,.dgrid{grid-template-columns:1fr;gap:14px}
+  /* Featured card collapse */
+  .dcard.featured{flex-direction:column!important}
+  .dcard.featured .dcard-img,.dcard.featured .ai-img{min-height:220px;aspect-ratio:16/9}
+  .dcard.featured .dcard-body{padding:24px 22px}
+  .dcard.featured .dcard-name{font-size:1.6rem}
+  /* Regular cards */
+  .dest-card,.dcard{border-radius:3px}
+  .dest-body,.dcard-body{padding:20px 20px 24px}
+  .dest-footer{flex-direction:column;align-items:flex-start;gap:12px}
+  .dest-actions{width:100%;justify-content:space-between}
+  .dest-cta{flex:1;justify-content:center;text-align:center;min-height:44px}
+  /* Facts */
+  .rfacts,.rintro-facts{gap:20px;flex-wrap:wrap}
+  .rfact-val{font-size:1.6rem}
+  /* Separator */
+  .rsep{padding:28px 22px 52px}
+  .rsep-inner{padding:28px 24px;flex-direction:column}
+  /* Payment strip */
+  .payment-strip{padding:52px 22px;grid-template-columns:1fr;gap:28px}
+  /* Final CTA */
+  .pkg-final-cta{padding:52px 22px;flex-direction:column}
+  .pkg-final-btns{flex-direction:column;width:100%}
+  .pkg-final-btns a{justify-content:center;min-height:48px}
+  /* Galapagos note */
+  .galapagos-note{flex-direction:column;gap:8px;padding:16px 18px}
+}
+@media (max-width:480px){
+  .region-tab,.rtab{padding:13px 16px;font-size:.62rem}
+  .dest-grid,.dgrid{gap:10px}
+  .region-section,.rsec{padding:44px 18px 0}
+}
+</style>
+
 </head>
 <body data-page="destinos">
   <div class="cursor" id="cur"></div>
   <div class="cursor-ring" id="curRing"></div>
-  <a class="wa-float" href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20informacion%20sobre%20paquetes" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a class="wa-float" href="https://wa.me/593960943582 onclick="gtag('event','whatsapp_click',{button_location:'flotante',pagina:'destinos'})"?text=Hola%20Andara%2C%20quiero%20informacion%20sobre%20paquetes" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
   <nav class="site-nav scrolled" id="nav">
@@ -515,7 +562,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
       <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
       <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
       <li><a href="blog.html" data-nav="blog">Blog</a></li>
-      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto" onclick="gtag('event','reservar_click',{location:'navegacion',pagina:'destinos'})">Reservar</a></li>
     </ul>
     <button class="hamburger" id="hbg" aria-label="Menú"><span></span><span></span><span></span></button>
   </nav>
@@ -580,7 +627,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $12.42</strong>Transferencia: $134 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#costa" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Esmeraldas',region:'Costa'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -606,7 +653,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $13.25</strong>Transferencia: $143 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#costa" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Canoa',region:'Costa'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -633,7 +680,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $14.08</strong>Transferencia: $152 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#costa" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Puerto_Lopez',region:'Costa'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -659,7 +706,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $13.25</strong>Transferencia: $143 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#costa" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Montañita',region:'Costa'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -686,7 +733,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $10.75</strong>Transferencia: $116 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#costa" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Salinas',region:'Costa'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -728,7 +775,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $14.92</strong>Transferencia: $161 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#sierra" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Quito',region:'Sierra'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -756,7 +803,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $16.58</strong>Transferencia: $179 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#sierra" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Cotopaxi',region:'Sierra'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -783,7 +830,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $13.25</strong>Transferencia: $143 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#sierra" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Quilotoa',region:'Sierra'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -811,7 +858,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $14.08</strong>Transferencia: $152 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#sierra" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Baños',region:'Sierra'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -838,7 +885,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $14.92</strong>Transferencia: $161 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#sierra" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Cuenca',region:'Sierra'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -881,7 +928,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $16.58</strong>Transferencia: $179 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#amazonia" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Tena',region:'Amazonia'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -908,7 +955,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $14.92</strong>Transferencia: $161 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#amazonia" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Puyo',region:'Amazonia'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -935,7 +982,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $37.42</strong>Transferencia: $404 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#amazonia" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Yasuní',region:'Amazonia'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -963,7 +1010,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $66.58</strong>Transferencia: $719 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#amazonia" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Napo_Wildlife',region:'Amazonia'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -990,7 +1037,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $20.75</strong>Transferencia: $224 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#amazonia" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Limoncocha',region:'Amazonia'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -1036,7 +1083,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $66.58</strong>Transferencia: $719 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#galapagos" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Santa_Cruz',region:'Galápagos'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -1064,7 +1111,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $99.92</strong>Transferencia: $1.079 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#galapagos" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'SC_Isabela',region:'Galápagos'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -1091,7 +1138,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $141.58</strong>Transferencia: $1.529 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#galapagos" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'San_Cristobal',region:'Galápagos'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>
@@ -1118,7 +1165,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
             <div class="dest-foot-left"><strong>12 cuotas de $241.58</strong>Transferencia: $2.609 (-10%)</div>
             <div class="dest-actions">
               <a href="destinos.html#galapagos" class="dest-more">Ver destino</a>
-              <a href="contacto.html" class="dest-cta">Reservar</a>
+              <a href="contacto.html" onclick="gtag('event','destination_click',{destino:'Española',region:'Galápagos'})" class="dest-cta">Reservar</a>
             </div>
           </div>
         </div>

@@ -70,10 +70,40 @@
   gtag('js', new Date());
   gtag('config', 'G-T6GSN4Z406');
 </script>
+
+<style id="mobile-opt">
+/* ── blog.html mobile ≤640px ── */
+@media (max-width:640px){
+  .blog-hero{padding:100px 22px 56px}
+  .bh-title{font-size:clamp(2.4rem,9vw,3.2rem)}
+  .bh-sub{font-size:.88rem}
+  .blog-section{padding:56px 22px}
+  .blog-header{flex-direction:column;align-items:flex-start;gap:16px}
+  .cat-filter{flex-wrap:wrap;gap:4px}
+  .cf-btn{flex:1 0 calc(33% - 4px);text-align:center;padding:9px 8px;font-size:.66rem}
+  /* Featured article */
+  .art-card.featured{flex-direction:column}
+  .art-card.featured .ai-img{aspect-ratio:16/9}
+  .art-card.featured .ai-body{padding:28px 24px}
+  .art-card.featured .ai-title{font-size:1.4rem}
+  /* Grid */
+  .art-grid{grid-template-columns:1fr}
+  /* WA band */
+  .wa-band{padding:56px 22px;grid-template-columns:1fr;gap:32px}
+  .wa-band-form{padding:28px 22px}
+  .wbf-btn{min-height:48px;justify-content:center}
+  .wbf-btns{gap:10px}
+}
+@media (max-width:480px){
+  .cf-btn{flex:1 0 calc(50% - 4px)}
+  .blog-section{padding:48px 18px}
+}
+</style>
+
 </head>
 <body data-page="blog">
   <div class="cursor" id="cur"></div><div class="cursor-ring" id="curRing"></div>
-  <a class="wa-float" href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20guias%20de%20viaje" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a class="wa-float" href="https://wa.me/593960943582 onclick="gtag('event','whatsapp_click',{button_location:'flotante',pagina:'blog'})"?text=Hola%20Andara%2C%20quiero%20recibir%20guias%20de%20viaje" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
   <nav class="site-nav scrolled" id="nav"><a class="nav-logo" href="index.html">And<span>a</span>ra</a>
     <ul class="nav-links">
@@ -81,7 +111,7 @@
       <li><a href="destinos.html" data-nav="destinos">Destinos</a></li>
       <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
       <li><a href="blog.html" data-nav="blog">Blog</a></li>
-      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto">Reservar</a></li>
+      <li><a href="contacto.html" class="nav-reserve" data-nav="contacto" onclick="gtag('event','reservar_click',{location:'navegacion',pagina:'blog'})">Reservar</a></li>
     </ul><button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
   <div class="mobile-menu" id="mm">
@@ -106,12 +136,12 @@
         <h2 class="section-title">Encuentra tu<br><em>guia ideal</em></h2>
       </div>
       <div class="cat-filter">
-        <button class="cf-btn active" data-cat="all">Todas</button>
-        <button class="cf-btn" data-cat="galapagos">Galápagos</button>
-        <button class="cf-btn" data-cat="costa">Costa</button>
-        <button class="cf-btn" data-cat="sierra">Sierra</button>
-        <button class="cf-btn" data-cat="amazonia">Amazonía</button>
-        <button class="cf-btn" data-cat="tips">Tips</button>
+        <button class="cf-btn active" data-cat="all" onclick="gtag('event','blog_filter',{categoria:'todos'})">Todas</button>
+        <button class="cf-btn" data-cat="galapagos" onclick="gtag('event','blog_filter',{categoria:'galapagos'})">Galápagos</button>
+        <button class="cf-btn" data-cat="costa" onclick="gtag('event','blog_filter',{categoria:'costa'})">Costa</button>
+        <button class="cf-btn" data-cat="sierra" onclick="gtag('event','blog_filter',{categoria:'sierra'})">Sierra</button>
+        <button class="cf-btn" data-cat="amazonia" onclick="gtag('event','blog_filter',{categoria:'amazonia'})">Amazonía</button>
+        <button class="cf-btn" data-cat="tips" onclick="gtag('event','blog_filter',{categoria:'tips'})">Tips</button>
       </div>
     </div>
 
@@ -126,7 +156,7 @@
           <div class="ai-date">Marzo 2025</div>
           <h3 class="ai-title">Todo lo que necesitas saber antes de ir a Galápagos</h3>
           <p class="ai-excerpt">La tarifa INGALA, los mejores meses, qué islas visitar según tu presupuesto y cómo moverse entre ellas. La guía más completa para tu primera vez en las islas.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Todo%20lo%20que%20necesitas%20saber%20antes%20de%2" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Todo%20lo%20que%20necesitas%20saber%20antes%20de%2" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Galápagos'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
     </div>
@@ -141,7 +171,7 @@
           <div class="ai-date">Febrero 2025</div>
           <h3 class="ai-title">Costa ecuatoriana: cuándo ir y qué esperar según la temporada</h3>
           <p class="ai-excerpt">Temporada seca vs. temporada de lluvias en la costa. Cuándo ver ballenas, cuándo surfear y cuándo ir con familia. Todo sobre el clima costera de Ecuador.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Costa%20ecuatoriana:%20cuándo%20ir%20y%20qué%20esp" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Costa%20ecuatoriana:%20cuándo%20ir%20y%20qué%20esp" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Costa_Temporada'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
       <div class="art-card reveal" data-cat="sierra">
@@ -154,7 +184,7 @@
           <div class="ai-date">Enero 2025</div>
           <h3 class="ai-title">Quilotoa sin secretos: la guía completa del cráter más fotogénico del Ecuador</h3>
           <p class="ai-excerpt">Cómo llegar, dónde hospedarse con vistas al cráter, el hike al fondo, el kayak y el mercado de Zumbahua. Todo lo que necesitas saber para aprovechar el día.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Quilotoa%20sin%20secretos:%20la%20guía%20completa%" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Quilotoa%20sin%20secretos:%20la%20guía%20completa%" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Quilotoa'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
       <div class="art-card reveal" data-cat="amazonia">
@@ -167,7 +197,7 @@
           <div class="ai-date">Diciembre 2024</div>
           <h3 class="ai-title">Tu primera vez en la Amazonía ecuatoriana: qué esperar y cómo prepararte</h3>
           <p class="ai-excerpt">Tena o Yasuní, qué diferencias hay, qué llevar, cómo evitar los mosquitos y por qué la Amazonía ecuatoriana es diferente al resto del Amazonas. Guía práctica.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Tu%20primera%20vez%20en%20la%20Amazonía%20ecuatori" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Tu%20primera%20vez%20en%20la%20Amazonía%20ecuatori" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Amazonia'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
       <div class="art-card reveal" data-cat="sierra">
@@ -180,7 +210,7 @@
           <div class="ai-date">Noviembre 2024</div>
           <h3 class="ai-title">Quito en 48 horas: la ruta perfecta por el centro histórico</h3>
           <p class="ai-excerpt">Dos días en Quito aprovechados al máximo. Desde El Panecillo hasta el Teleférico, la basílica al atardecer y los mejores restaurantes del barrio La Floresta.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Quito%20en%2048%20horas:%20la%20ruta%20perfecta%20" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Quito%20en%2048%20horas:%20la%20ruta%20perfecta%20" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Quito'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
       <div class="art-card reveal" data-cat="costa">
@@ -193,7 +223,7 @@
           <div class="ai-date">Octubre 2024</div>
           <h3 class="ai-title">Avistamiento de ballenas en Puerto López: guía completa de la temporada</h3>
           <p class="ai-excerpt">De junio a septiembre, las ballenas jorobadas llegan a la costa ecuatoriana. Cómo organizar el tour, qué esperar en el mar y por qué la Isla de la Plata vale la pena.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Avistamiento%20de%20ballenas%20en%20Puerto%20López" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Avistamiento%20de%20ballenas%20en%20Puerto%20López" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Puerto_Lopez'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
       <div class="art-card reveal" data-cat="sierra">
@@ -206,7 +236,7 @@
           <div class="ai-date">Septiembre 2024</div>
           <h3 class="ai-title">Las mejores haciendas al pie del Cotopaxi para una noche diferente</h3>
           <p class="ai-excerpt">Dormir en una hacienda colonial con el Cotopaxi nevado frente a la ventana. Las mejores opciones desde $80 hasta $250 por noche, con caballos, fogones y paisaje andino.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Las%20mejores%20haciendas%20al%20pie%20del%20Cotop" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%20Las%20mejores%20haciendas%20al%20pie%20del%20Cotop" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Cotopaxi'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
       <div class="art-card reveal" data-cat="tips">
@@ -219,7 +249,7 @@
           <div class="ai-date">Agosto 2024</div>
           <h3 class="ai-title">12 cosas que nadie te dice antes de viajar a Ecuador por primera vez</h3>
           <p class="ai-excerpt">La altitud en Quito, el clima impredecible de los Andes, qué no comer en el primer día, cómo moverse entre regiones y los errores más comunes de los viajeros. Guía honesta.</p>
-          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%2012%20cosas%20que%20nadie%20te%20dice%20antes%20de%" class="ai-cta" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
+          <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20la%20guia%20sobre%3A%2012%20cosas%20que%20nadie%20te%20dice%20antes%20de%" class="ai-cta" onclick="gtag('event','blog_guide_click',{articulo:'Tips_Ecuador'})" target="_blank" rel="noopener">Recibir guia por WhatsApp &#x2192;</a>
         </div>
       </div>
     </div>
@@ -236,7 +266,7 @@
       <div class="wbf-title">Empecemos con una guia gratuita</div>
       <p class="wbf-sub">Cuéntanos a que región quieres ir y te enviamos la guia completa por WhatsApp, sin costo. Nuestros asesores la personalizan para tu perfil de viajero.</p>
       <div class="wbf-btns">
-        <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20guias%20de%20viaje%20de%20Ecuador" class="wbf-btn wbf-btn-wa" target="_blank" rel="noopener">
+        <a href="https://wa.me/593960943582?text=Hola%20Andara%2C%20quiero%20recibir%20guias%20de%20viaje%20de%20Ecuador" class="wbf-btn wbf-btn-wa" onclick="gtag('event','whatsapp_click',{button_location:'blog_cta_final'})" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Quiero mi guia gratuita
         </a>
